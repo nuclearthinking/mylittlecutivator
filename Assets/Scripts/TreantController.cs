@@ -24,7 +24,8 @@ public class TreantController : MonoBehaviour
 
     private GameObject thePlayer;
 
-    // Start is called before the first frame update
+    public int hitPoints = 100;
+    public GameObject deathEffect;
     void Start()
     {
         _treantAnimator = GetComponent<Animator>();
@@ -101,5 +102,21 @@ public class TreantController : MonoBehaviour
             reloading = true;
             thePlayer = other.gameObject;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hitPoints -= damage;
+
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

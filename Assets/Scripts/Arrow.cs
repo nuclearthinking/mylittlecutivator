@@ -7,10 +7,17 @@ public class Arrow : MonoBehaviour
 {
 
     public GameObject hitEffect;
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    
+    private void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        if (hitInfo.gameObject.CompareTag("Enemy"))
+        {
+            TreantController treant = hitInfo.GetComponent<TreantController>();
+            treant.TakeDamage(20);
+        }
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        // Destroy(effect, 5f);
-        // Destroy(gameObject);
+        Destroy(effect, 2f);
+        Destroy(gameObject);
     }
 }

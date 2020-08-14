@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3477338437979895723}
   m_Layer: 0
   m_Name: Treant
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,3 +167,7 @@ MonoBehaviour:
   movementSpeed: 5
   timeBetweenMove: 2
   timeToMove: 1
+  waitToReload: 0
+  hitPoints: 100
+  deathEffect: {fileID: 3802082717995975997, guid: dd653577162a54943ac7bc93f267d160,
+    type: 3}
