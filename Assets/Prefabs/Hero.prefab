@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
+  animator: {fileID: 5258889832768088753}
+  rb: {fileID: 5258889832768088759}
   lastMove: {x: 0, y: 0}
 --- !u!95 &5258889832768088753
 Animator:

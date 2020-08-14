@@ -8,15 +8,15 @@ using Random = UnityEngine.Random;
 public class TreantController : MonoBehaviour
 {
     public float movementSpeed;
-    private Rigidbody2D _myRigidBody;
-    private bool _moving;
-    public float timeBetweenMove;
-    private float _timeBetweenMoveCounter;
+    public Rigidbody2D rb;
+    public Animator animator;
     public float timeToMove;
+    public float timeBetweenMove;
+    
+    private bool _moving;
+    private float _timeBetweenMoveCounter;
     private float _timeToMoveCounter;
     private Vector3 _moveDirection;
-
-    private Animator _treantAnimator;
     private Vector2 _lastMove;
 
     public float waitToReload;
@@ -28,8 +28,6 @@ public class TreantController : MonoBehaviour
     public GameObject deathEffect;
     void Start()
     {
-        _treantAnimator = GetComponent<Animator>();
-        _myRigidBody = GetComponent<Rigidbody2D>();
 
         _timeBetweenMoveCounter = Random.Range(
             timeBetweenMove * 0.75f,
@@ -47,7 +45,7 @@ public class TreantController : MonoBehaviour
         if (_moving)
         {
             _timeToMoveCounter -= Time.deltaTime;
-            _myRigidBody.velocity = _moveDirection;
+            rb.velocity = _moveDirection;
 
             if (_timeToMoveCounter < 0f)
             {
@@ -61,7 +59,7 @@ public class TreantController : MonoBehaviour
         else
         {
             _timeBetweenMoveCounter -= Time.deltaTime;
-            _myRigidBody.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
             if (_timeBetweenMoveCounter < 0f)
             {
                 _moving = true;
@@ -77,11 +75,11 @@ public class TreantController : MonoBehaviour
             }
         }
 
-        _treantAnimator.SetFloat("MoveX", _myRigidBody.velocity.x);
-        _treantAnimator.SetFloat("MoveY", _myRigidBody.velocity.y);
-        _treantAnimator.SetBool("Moving", _moving);
-        _treantAnimator.SetFloat("LastMoveX", _lastMove.x);
-        _treantAnimator.SetFloat("LastMoveY", _lastMove.y);
+        animator.SetFloat("MoveX", rb.velocity.x);
+        animator.SetFloat("MoveY", rb.velocity.y);
+        animator.SetBool("Moving", _moving);
+        animator.SetFloat("LastMoveX", _lastMove.x);
+        animator.SetFloat("LastMoveY", _lastMove.y);
 
         if (reloading)
         {

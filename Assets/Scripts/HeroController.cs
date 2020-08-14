@@ -10,10 +10,9 @@ public class HeroController : MonoBehaviour
 
     public float movementSpeed;
 
-    private Animator animator;
+    public Animator animator;
     public Rigidbody2D rb;
 
-    private bool _playerMoving;
     public Vector2 lastMove;
     private static bool _playerExists;
 
@@ -21,7 +20,6 @@ public class HeroController : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
         if (!_playerExists)
         {
             _playerExists = true;
@@ -36,33 +34,23 @@ public class HeroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.magnitude > 0)
-        {
-            _playerMoving = true;
-        }
-        else
-        {
-            _playerMoving = false;
-        }
-
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
         {
-            _playerMoving = true;
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         }
 
         if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
         {
-            _playerMoving = true;
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
         }
-
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
         animator.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         animator.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
-        animator.SetBool("PlayerMoving", _playerMoving);
         animator.SetFloat("LastMoveX", lastMove.x);
         animator.SetFloat("LastMoveY", lastMove.y);
     }
