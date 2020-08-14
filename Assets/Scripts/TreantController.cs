@@ -12,7 +12,7 @@ public class TreantController : MonoBehaviour
     public Animator animator;
     public float timeToMove;
     public float timeBetweenMove;
-    
+
     private bool _moving;
     private float _timeBetweenMoveCounter;
     private float _timeToMoveCounter;
@@ -26,9 +26,11 @@ public class TreantController : MonoBehaviour
 
     public int hitPoints = 100;
     public GameObject deathEffect;
+
+    private Vector2 movement;
+
     void Start()
     {
-
         _timeBetweenMoveCounter = Random.Range(
             timeBetweenMove * 0.75f,
             timeBetweenMove * 1.25f
@@ -42,11 +44,29 @@ public class TreantController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetBool("Moving", _moving);
+        animator.SetFloat("LastMoveX", _lastMove.x);
+        animator.SetFloat("LastMoveY", _lastMove.y);
+
+        if (reloading)
+        {
+            waitToReload -= Time.deltaTime;
+            if (waitToReload < 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                thePlayer.SetActive(true);
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {    
         if (_moving)
         {
             _timeToMoveCounter -= Time.deltaTime;
-            rb.velocity = _moveDirection;
-
+            rb.MovePosition(rb.position + movement * (movementSpeed * Time.fixedDeltaTime));
             if (_timeToMoveCounter < 0f)
             {
                 _moving = false;
@@ -67,29 +87,12 @@ public class TreantController : MonoBehaviour
                     timeToMove * 0.75f,
                     timeToMove * 1.25f
                 );
-                _moveDirection = new Vector3(
-                    Random.Range(-1f, 1f) * movementSpeed,
-                    Random.Range(-1f, 1f) * movementSpeed,
-                    0f);
-                _lastMove = _moveDirection;
+                movement.x = Random.Range(-1f, 1f);
+                movement.y = Random.Range(-1f, 1f);
+                _lastMove = movement;
             }
         }
-
-        animator.SetFloat("MoveX", rb.velocity.x);
-        animator.SetFloat("MoveY", rb.velocity.y);
-        animator.SetBool("Moving", _moving);
-        animator.SetFloat("LastMoveX", _lastMove.x);
-        animator.SetFloat("LastMoveY", _lastMove.y);
-
-        if (reloading)
-        {
-            waitToReload -= Time.deltaTime;
-            if (waitToReload < 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                thePlayer.SetActive(true);
-            }
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -114,7 +117,8 @@ public class TreantController : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        Destroy(effect, 2f);
     }
 }
