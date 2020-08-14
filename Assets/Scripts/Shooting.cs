@@ -22,6 +22,7 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
     }

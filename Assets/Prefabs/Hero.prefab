@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874890696694713606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.542, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5258889832768088764}
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5258889832768088753}
   - component: {fileID: 5258889832768088759}
   - component: {fileID: 3645131015912789314}
+  - component: {fileID: -6294110231627777485}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -60,8 +61,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5258889832768088766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14, y: -0.29, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6276036304880992637}
   m_Father: {fileID: 0}
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
+  firePoint: {fileID: 6276036304880992637}
   animator: {fileID: 5258889832768088753}
   rb: {fileID: 5258889832768088759}
   lastMove: {x: 0, y: 0}
@@ -212,3 +214,19 @@ CircleCollider2D:
   m_Offset: {x: -0.02, y: -0.53}
   serializedVersion: 2
   m_Radius: 0.33077145
+--- !u!114 &-6294110231627777485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258889832768088766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f25a65db1679c4990bab913ae4ae29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 6276036304880992637}
+  arrowPrefab: {fileID: 2542510387517561537, guid: 5522147975128784da6f5e93c535fca1,
+    type: 3}
+  arrowForce: 20

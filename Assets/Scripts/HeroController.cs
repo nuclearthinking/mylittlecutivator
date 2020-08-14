@@ -9,7 +9,7 @@ public class HeroController : MonoBehaviour
     // Start is called before the first frame update
 
     public float movementSpeed;
-
+    public Transform firePoint;
     public Animator animator;
     public Rigidbody2D rb;
 
@@ -37,6 +37,31 @@ public class HeroController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.y == 1.0f && movement.x == 0.0f)
+        {
+            firePoint.transform.rotation = Quaternion.Euler(0f, 0f, 0f); //UP
+        }
+        else if (movement.y == -1.0f && movement.x == 0.0f)
+        {
+            firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
+        }
+        else if (movement.x == 1.0f && movement.y == 0.0f)
+        {    
+            firePoint.transform.rotation = Quaternion.Euler(0f, 0f, -90f); //RIGHT
+        }
+        else if (movement.x == -1.0f && movement.y == 0.0f)
+        {
+            firePoint.transform.rotation =  Quaternion.Euler(0f, 0f, 90f); //RIGHT
+        }
+        else if (movement.y == 1.0f && movement.x != 0.0f)
+        {
+            firePoint.transform.rotation= Quaternion.Euler(0f, 0f, 0f); //UP
+        }
+        else if (movement.y == -1.0f && movement.x != 0.0f)
+        {
+            firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
+        }
+
         if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
         {
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
@@ -46,6 +71,7 @@ public class HeroController : MonoBehaviour
         {
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
         }
+
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
