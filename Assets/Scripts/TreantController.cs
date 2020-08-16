@@ -12,7 +12,7 @@ public class TreantController : MonoBehaviour
     public Animator animator;
     public float timeToMove;
     public float timeBetweenMove;
-
+    public HealthBar treantHealthBar;
     private bool _moving;
     private float _timeBetweenMoveCounter;
     private float _timeToMoveCounter;
@@ -39,6 +39,7 @@ public class TreantController : MonoBehaviour
             timeToMove * 0.75f,
             timeToMove * 1.25f
         );
+        treantHealthBar.SetMaxHealth(hitPoints);
     }
 
     // Update is called once per frame
@@ -108,6 +109,7 @@ public class TreantController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hitPoints -= damage;
+        treantHealthBar.SetHealth(hitPoints);
 
         if (hitPoints <= 0)
         {

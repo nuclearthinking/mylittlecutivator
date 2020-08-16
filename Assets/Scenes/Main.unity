@@ -130,6 +130,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6294110231627777485, guid: 3966220c3d363424e8b8b21d3b1c40a0,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2035582598}
+    - target: {fileID: -6294110231627777485, guid: 3966220c3d363424e8b8b21d3b1c40a0,
+        type: 3}
+      propertyPath: AttackRate
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5258889832768088754, guid: 3966220c3d363424e8b8b21d3b1c40a0,
         type: 3}
       propertyPath: movementSpeed
@@ -629,7 +639,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1902,7 +1912,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831588801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 9.14, z: 0.2551608}
+  m_LocalPosition: {x: 1.4, y: 9.14, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 650638866}
@@ -2667,7 +2677,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8394398ac16f6244bbc7aaf5cb48a17b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2689,7 +2699,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -17511,7 +17521,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8394398ac16f6244bbc7aaf5cb48a17b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17628,6 +17638,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 94551174}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2035582598 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5258889832768088753, guid: 3966220c3d363424e8b8b21d3b1c40a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 94551174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5116036697006999906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17653,7 +17669,7 @@ PrefabInstance:
     - target: {fileID: 5116036696981772888, guid: 6a62e20dee41a1e48a3b43378733bbb7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 5116036696981772888, guid: 6a62e20dee41a1e48a3b43378733bbb7,
         type: 3}
