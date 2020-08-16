@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5258889832768088759}
   - component: {fileID: 3645131015912789314}
   - component: {fileID: -6294110231627777485}
+  - component: {fileID: 1081870810211701729}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -230,3 +231,17 @@ MonoBehaviour:
   arrowPrefab: {fileID: 2542510387517561537, guid: 5522147975128784da6f5e93c535fca1,
     type: 3}
   arrowForce: 20
+--- !u!114 &1081870810211701729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258889832768088766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbe51add42553f4ca807c3083fe16bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0

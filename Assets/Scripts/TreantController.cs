@@ -97,12 +97,12 @@ public class TreantController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Hero")
-        {
-            other.gameObject.SetActive(false);
-            reloading = true;
-            thePlayer = other.gameObject;
-        }
+        // if (other.gameObject.name == "Hero")
+        // {
+        //     other.gameObject.SetActive(false);
+        //     reloading = true;
+        //     thePlayer = other.gameObject;
+        // }
     }
 
     public void TakeDamage(int damage)
