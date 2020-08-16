@@ -158,7 +158,7 @@ MonoBehaviour:
   firePoint: {fileID: 6276036304880992637}
   animator: {fileID: 5258889832768088753}
   rb: {fileID: 5258889832768088759}
-  lastMove: {x: 0, y: 0}
+  lastMove: {x: 0, y: -1}
 --- !u!95 &5258889832768088753
 Animator:
   serializedVersion: 3
@@ -232,6 +232,7 @@ MonoBehaviour:
     type: 3}
   arrowForce: 20
   animator: {fileID: 5258889832768088753}
+  AttackRate: 0.5
 --- !u!114 &1081870810211701729
 MonoBehaviour:
   m_ObjectHideFlags: 0

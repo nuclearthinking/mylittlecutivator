@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,18 +11,28 @@ public class Shooting : MonoBehaviour
     public GameObject arrowPrefab;
     public float arrowForce = 20f;
     public Animator animator;
+    public float AttackRate = 1.0f;
+
+    private float nextFireTime;
+
+
+    private void Start()
+    {
+        nextFireTime = Time.time;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFireTime)
         {
-            Shoot();    
+            Shoot();
+            nextFireTime = Time.time + AttackRate;
         }
     }
 
     void Shoot()
-    {    
+    {
         animator.SetTrigger("Attack");
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
