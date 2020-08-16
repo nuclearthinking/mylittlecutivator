@@ -231,6 +231,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 2542510387517561537, guid: 5522147975128784da6f5e93c535fca1,
     type: 3}
   arrowForce: 20
+  animator: {fileID: 5258889832768088753}
 --- !u!114 &1081870810211701729
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,18 +9,20 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject arrowPrefab;
     public float arrowForce = 20f;
+    public Animator animator;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();    
         }
     }
 
     void Shoot()
-    {
+    {    
+        animator.SetTrigger("Attack");
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
