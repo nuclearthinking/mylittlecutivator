@@ -172,6 +172,8 @@ MonoBehaviour:
   timeToMove: 1
   timeBetweenMove: 2
   treantHealthBar: {fileID: 8181319576412920844}
+  damageText: {fileID: -8301144193936185069, guid: c89d4657c2d04cb46ada3d5103cc6893,
+    type: 3}
   waitToReload: 5
   hitPoints: 100
   deathEffect: {fileID: 3802082717995975997, guid: dd653577162a54943ac7bc93f267d160,

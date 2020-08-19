@@ -13,6 +13,7 @@ public class TreantController : MonoBehaviour
     public float timeToMove;
     public float timeBetweenMove;
     public HealthBar treantHealthBar;
+    public DamageScrollingText damageText;
     private bool _moving;
     private float _timeBetweenMoveCounter;
     private float _timeToMoveCounter;
@@ -20,7 +21,7 @@ public class TreantController : MonoBehaviour
     private Vector2 _lastMove;
 
     public float waitToReload;
-    private bool reloading;
+    private bool reloading = false;
 
     private GameObject thePlayer;
 
@@ -63,7 +64,7 @@ public class TreantController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {    
+    {
         if (_moving)
         {
             _timeToMoveCounter -= Time.deltaTime;
@@ -93,7 +94,6 @@ public class TreantController : MonoBehaviour
                 _lastMove = movement;
             }
         }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -108,6 +108,13 @@ public class TreantController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        DamageScrollingText damageTextEffect = Instantiate(
+            damageText,
+            transform.position + new Vector3(0f, 0.5f, 0f),
+            Quaternion.identity
+        );
+        damageTextEffect.damageAmount = damage;
+
         hitPoints -= damage;
         treantHealthBar.SetHealth(hitPoints);
 
