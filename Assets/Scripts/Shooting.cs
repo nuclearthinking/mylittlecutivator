@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Shooting : MonoBehaviour
     public float arrowForce = 20f;
     public Animator animator;
     public float AttackRate = 1.0f;
+    public Button attackButton;
 
     private float nextFireTime;
 
@@ -19,6 +21,7 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         nextFireTime = Time.time;
+        attackButton.onClick.AddListener(Shoot);
     }
 
     // Update is called once per frame

@@ -12,7 +12,7 @@ public class HeroController : MonoBehaviour
     public Transform firePoint;
     public Animator animator;
     public Rigidbody2D rb;
-
+    public Joystick joystick;
     public Vector2 lastMove;
     private static bool _playerExists;
 
@@ -34,14 +34,14 @@ public class HeroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = joystick.Horizontal;
+        movement.y = joystick.Vertical;
 
         if (movement.y == 1.0f && movement.x == 0.0f)
         {
             firePoint.transform.rotation = Quaternion.Euler(0f, 0f, 0f); //UP
         }
-        else if (movement.y == -1.0f && movement.x == 0.0f)
+        else if (movement.y >= -0.3f && movement.x == 0.0f)
         {
             firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
         }
@@ -62,21 +62,21 @@ public class HeroController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
         }
 
-        if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+        if (movement.x > 0.5f || movement.x < -0.5f)
         {
-            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            lastMove = new Vector2(movement.x, 0f);
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
+        if (movement.y > 0.5f || movement.y < -0.5f)
         {
-            lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
+            lastMove = new Vector2(0f, movement.y);
         }
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        animator.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
-        animator.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
+        animator.SetFloat("MoveX", movement.x);
+        animator.SetFloat("MoveY", movement.y);
         animator.SetFloat("LastMoveX", lastMove.x);
         animator.SetFloat("LastMoveY", lastMove.y);
     }
