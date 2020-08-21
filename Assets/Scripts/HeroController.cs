@@ -48,6 +48,7 @@ public class HeroController : MonoBehaviour
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
 
+        
 
         playerDirection = GetPlayerDirection(movement.x, movement.y);
         Quaternion firePointRotation;
@@ -64,12 +65,12 @@ public class HeroController : MonoBehaviour
         firePoint.transform.rotation = firePointRotation;
 
 
-        if (movement.x > 0.3f || movement.x < -0.3f)
+        if (movement.x > 0.1f || movement.x < -0.1f)
         {
             lastMove = new Vector2(movement.x, 0f);
         }
 
-        if (movement.y > 0.3f || movement.y < -0.3f)
+        if (movement.y > 0.1f || movement.y < -0.1f)
         {
             lastMove = new Vector2(0f, movement.y);
         }
@@ -81,6 +82,30 @@ public class HeroController : MonoBehaviour
         animator.SetFloat("MoveY", movement.y);
         animator.SetFloat("LastMoveX", lastMove.x);
         animator.SetFloat("LastMoveY", lastMove.y);
+        
+        if (movement.x >= .2f)
+        {
+            movement.x = movementSpeed;
+        } else if (movement.x <= -.2f)
+        {
+            movement.x = -movementSpeed;
+        }
+        else
+        {
+            movement.x = 0f;
+        }
+
+        if (movement.y >= .2f)
+        {
+            movement.y = movementSpeed;
+        } else if (movement.y <= -.2f)
+        {
+            movement.y = -movementSpeed;
+        }
+        else
+        {
+            movement.y = 0f;
+        }
     }
 
     PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
@@ -124,6 +149,6 @@ public class HeroController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * (movementSpeed * Time.fixedDeltaTime));
+        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
     }
 }
