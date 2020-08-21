@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+public enum PlayerDirection
+{
+    Up,
+    Left,
+    Right,
+    Down,
+    Zero,
+}
 public class HeroController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,7 +24,10 @@ public class HeroController : MonoBehaviour
     public Vector2 lastMove;
     private static bool _playerExists;
 
+    public PlayerDirection playerDirection;
     private Vector2 movement;
+
+    
 
     void Start()
     {
@@ -37,37 +48,28 @@ public class HeroController : MonoBehaviour
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
 
-        if (movement.y == 1.0f && movement.x == 0.0f)
+
+        playerDirection = GetPlayerDirection(movement.x, movement.y);
+        Quaternion firePointRotation;
+        if (playerDirection == PlayerDirection.Zero)
         {
-            firePoint.transform.rotation = Quaternion.Euler(0f, 0f, 0f); //UP
+            var lastPlayerDirection = GetPlayerDirection(lastMove.x, lastMove.y);
+            firePointRotation = GetFirePointRotation(lastPlayerDirection);
         }
-        else if (movement.y >= -0.3f && movement.x == 0.0f)
+        else
         {
-            firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
-        }
-        else if (movement.x == 1.0f && movement.y == 0.0f)
-        {    
-            firePoint.transform.rotation = Quaternion.Euler(0f, 0f, -90f); //RIGHT
-        }
-        else if (movement.x == -1.0f && movement.y == 0.0f)
-        {
-            firePoint.transform.rotation =  Quaternion.Euler(0f, 0f, 90f); //RIGHT
-        }
-        else if (movement.y == 1.0f && movement.x != 0.0f)
-        {
-            firePoint.transform.rotation= Quaternion.Euler(0f, 0f, 0f); //UP
-        }
-        else if (movement.y == -1.0f && movement.x != 0.0f)
-        {
-            firePoint.transform.rotation = Quaternion.Euler(0f, -0f, 180f); //DOWN
+            firePointRotation = GetFirePointRotation(playerDirection);
         }
 
-        if (movement.x > 0.5f || movement.x < -0.5f)
+        firePoint.transform.rotation = firePointRotation;
+
+
+        if (movement.x > 0.3f || movement.x < -0.3f)
         {
             lastMove = new Vector2(movement.x, 0f);
         }
 
-        if (movement.y > 0.5f || movement.y < -0.5f)
+        if (movement.y > 0.3f || movement.y < -0.3f)
         {
             lastMove = new Vector2(0f, movement.y);
         }
@@ -79,6 +81,45 @@ public class HeroController : MonoBehaviour
         animator.SetFloat("MoveY", movement.y);
         animator.SetFloat("LastMoveX", lastMove.x);
         animator.SetFloat("LastMoveY", lastMove.y);
+    }
+
+    PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
+    {
+        if (joystickX > 0.1f && joystickY < 0.1f && joystickY >= 0.0f)
+            return PlayerDirection.Right;
+        if (joystickX < -0.1f && joystickY < 0.1f && joystickY >= 0.0f)
+            return PlayerDirection.Left;
+        if (joystickY > 0.1f && joystickX < 0.1f && joystickX >= 0.0f)
+            return PlayerDirection.Up;
+        if (joystickY < -0.1f && joystickX < 0.1f && joystickX >= 0.0f)
+            return PlayerDirection.Down;
+
+        return PlayerDirection.Zero;
+    }
+
+    Quaternion GetFirePointRotation(PlayerDirection playerDirection)
+    {
+        if (playerDirection == PlayerDirection.Right)
+        {
+            return Quaternion.Euler(0f, 0f, -90f); // RIGHT
+        }
+
+        if (playerDirection == PlayerDirection.Left)
+        {
+            return Quaternion.Euler(0f, 0f, 90f); //LEFT
+        }
+
+        if (playerDirection == PlayerDirection.Up)
+        {
+            return Quaternion.Euler(0f, 0f, 0f); //UP
+        }
+
+        if (playerDirection == PlayerDirection.Down)
+        {
+            return Quaternion.Euler(0f, -0f, 180f); //DOWN
+        }
+
+        return Quaternion.identity;
     }
 
     private void FixedUpdate()
