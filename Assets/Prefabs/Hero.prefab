@@ -40,14 +40,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5258889832768088764}
   - component: {fileID: 5258889832768088765}
-  - component: {fileID: 5258889832768088755}
-  - component: {fileID: 5258889832768088754}
   - component: {fileID: 5258889832768088753}
   - component: {fileID: 5258889832768088759}
   - component: {fileID: 3645131015912789314}
-  - component: {fileID: -6294110231627777485}
   - component: {fileID: 1081870810211701729}
   - component: {fileID: 2035582594}
+  - component: {fileID: 3028102727221866745}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -121,47 +119,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!1773428102 &5258889832768088755
-ParentConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258889832768088766}
-  m_Enabled: 1
-  m_Weight: 1
-  m_TranslationAtRest: {x: -1.574, y: 0.278, z: 0}
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffsets: []
-  m_RotationOffsets: []
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 0
-  m_IsLocked: 0
-  m_Sources: []
---- !u!114 &5258889832768088754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258889832768088766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ff902112b23414a8dfaa14bd30dbd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 4
-  firePoint: {fileID: 6276036304880992637}
-  animator: {fileID: 5258889832768088753}
-  rb: {fileID: 5258889832768088759}
-  joystick: {fileID: 0}
-  lastMove: {x: 0, y: -1}
-  playerDirection: 0
 --- !u!95 &5258889832768088753
 Animator:
   serializedVersion: 3
@@ -218,25 +175,6 @@ CircleCollider2D:
   m_Offset: {x: -0.02, y: 0.03}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!114 &-6294110231627777485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258889832768088766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f25a65db1679c4990bab913ae4ae29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 6276036304880992637}
-  arrowPrefab: {fileID: 2542510387517561537, guid: 5522147975128784da6f5e93c535fca1,
-    type: 3}
-  arrowForce: 20
-  animator: {fileID: 5258889832768088753}
-  AttackRate: 0.3
-  attackButton: {fileID: 0}
 --- !u!114 &1081870810211701729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,4 +203,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
+  attackButton: {fileID: 0}
+--- !u!114 &3028102727221866745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258889832768088766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d539e22201cde634a9c7c43c41b29d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model:
+    currentHealth: 0
+    maximumHealth: 0
+    movementSpeed: 0
+    movement: {x: 0, y: 0}
+    lastMove: {x: 0, y: 0}
+    firePointRotation: {x: 0, y: 0, z: 0, w: 0}
+    xInput: 0
+    yInput: 0
+    nextFireTime: 0
+    arrowForce: 20
+    fireRate: 0.3
   firePoint: {fileID: 6276036304880992637}
+  movementSpeed: 4
+  fireRate: 0.3

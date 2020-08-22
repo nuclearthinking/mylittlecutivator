@@ -1,13 +1,16 @@
 ﻿using System;
 using Core;
+using Gameplay;
 using Model;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player
 {
     public class PlayerView : MonoBehaviour
     {
         public Joystick joystick;
+        public Button attackButton;
         private readonly PlayerModel model = Simulation.GetModel<PlayerModel>();
 
         private Animator animator;
@@ -15,6 +18,7 @@ namespace Player
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            attackButton.onClick.AddListener(AttackButtonPressed);
         }
 
         void Update()
@@ -31,6 +35,16 @@ namespace Player
             animator.SetFloat("MoveY", model.movement.y);
             animator.SetFloat("LastMoveX", model.lastMove.x);
             animator.SetFloat("LastMoveY", model.lastMove.y);
+        }
+
+        private void AttackButtonPressed()
+        {
+            if (Time.time > model.nextFireTime)
+            {
+                animator.SetTrigger("Attack");
+                Simulation.Schedule<PlayerShooting>();
+            }
+            
         }
     }
 }

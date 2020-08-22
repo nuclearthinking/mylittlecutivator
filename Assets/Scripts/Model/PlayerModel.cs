@@ -13,8 +13,9 @@ namespace Model
         public Quaternion firePointRotation;
         public float xInput;
         public float yInput;
-
-
+        public float nextFireTime = .0f;
+        public float arrowForce = 20f;
+        public float fireRate = 0.3f;
 
         public void SetFirePointRotation(Quaternion rotation)
         {

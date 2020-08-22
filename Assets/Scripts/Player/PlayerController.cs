@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Model;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Player
 
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
 
-        public Rigidbody2D rb;
+        private Rigidbody2D rb;
         public Transform firePoint;
         public float movementSpeed;
         public float fireRate;
@@ -20,11 +21,65 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            model.movement.x = model.xInput;
+            model.movement.y = model.yInput;
+            
+            var playerDirection = GetPlayerDirection(model.xInput, model.yInput);
+            Quaternion firePointRotation;
+            if (playerDirection == PlayerDirection.Zero)
+            {
+                var lastPlayerDirection = GetPlayerDirection(model.lastMove.x, model.lastMove.y);
+                firePointRotation = GetFirePointRotation(lastPlayerDirection);
+            }
+            else
+            {
+                firePointRotation = GetFirePointRotation(playerDirection);
+            }
+
+            firePoint.transform.rotation = firePointRotation;
+
+
+            if (model.movement.x > 0.1f || model.movement.x < -0.1f)
+            {
+                model.lastMove = new Vector2(model.movement.x, 0f);
+            }
+
+            if (model.movement.y > 0.1f || model.movement.y < -0.1f)
+            {
+                model.lastMove = new Vector2(0f, model.movement.y);
+            }
+            if (model.movement.x >= .2f)
+            {
+                model.movement.x = movementSpeed;
+            } else if (model.movement.x <= -.2f)
+            {
+                model.movement.x = -movementSpeed;
+            }
+            else
+            {
+                model.movement.x = 0f;
+            }
+
+            if (model.movement.y >= .2f)
+            {
+                model.movement.y = movementSpeed;
+            } else if (model.movement.y <= -.2f)
+            {
+                model.movement.y = -movementSpeed;
+            }
+            else
+            {
+                model.movement.y = 0f;
+            }
+        }
+
         private void FixedUpdate()
         {
-        
+            rb.MovePosition(rb.position + model.movement * Time.fixedDeltaTime);
         }
-        
+
         PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
         {
             if (joystickX > 0.1f && joystickY < 0.1f && joystickY >= 0.0f)
