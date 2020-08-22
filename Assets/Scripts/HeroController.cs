@@ -48,8 +48,6 @@ public class HeroController : MonoBehaviour
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
 
-        
-
         playerDirection = GetPlayerDirection(movement.x, movement.y);
         Quaternion firePointRotation;
         if (playerDirection == PlayerDirection.Zero)

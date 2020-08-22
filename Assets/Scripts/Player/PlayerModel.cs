@@ -7,5 +7,6 @@ public class PlayerModel
     public int currentHealth;
     public int maximumHealth;
     public float movementSpeed;
+    public Vector2 movement;
     public Vector2 lastMove;
 }
