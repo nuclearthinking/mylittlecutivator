@@ -9,12 +9,11 @@ namespace Gameplay
 
         private GameModel gameModel;
         private PlayerModel playerModel;
-        private GameObject arrowPrefab;
         
         
         public override void Execute()
         {
-            arrowPrefab = Resources.Load<GameObject>("Prefabs/Arrow");
+            var arrowPrefab = Resources.Load<GameObject>("Prefabs/Arrow");
             gameModel = Simulation.GetModel<GameModel>();
             playerModel = Simulation.GetModel<PlayerModel>();
             var arrow = GameObject.Instantiate(
