@@ -8,7 +8,6 @@ namespace Player
     public class PlayerView : MonoBehaviour
     {
         public Joystick joystick;
-        public Transform firePoint;
         private readonly PlayerModel model = Simulation.GetModel<PlayerModel>();
 
         private Animator animator;
@@ -25,7 +24,6 @@ namespace Player
             model.yInput = joystick.Vertical;
 
             // MODIFY VIEW
-            firePoint.transform.rotation = model.firePointRotation;
             animator.SetFloat("Horizontal", model.movement.x);
             animator.SetFloat("Vertical", model.movement.y);
             animator.SetFloat("Speed", model.movement.sqrMagnitude);

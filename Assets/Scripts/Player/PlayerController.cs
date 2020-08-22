@@ -1,16 +1,23 @@
-﻿using UnityEngine;
+﻿using Core;
+using Model;
+using UnityEngine;
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-    
-        public 
-    
+
+        public PlayerModel model = Simulation.GetModel<PlayerModel>();
+
+        public Rigidbody2D rb;
+        public Transform firePoint;
+        public float movementSpeed;
+        public float fireRate;
+        
         // Start is called before the first frame update
         void Start()
         {
-        
+            rb = GetComponent<Rigidbody2D>();
         }
 
         private void FixedUpdate()
