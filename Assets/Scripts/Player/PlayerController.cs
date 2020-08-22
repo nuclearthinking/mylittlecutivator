@@ -9,11 +9,10 @@ namespace Player
     {
 
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
+        public Transform firePoint;
 
         private Rigidbody2D rb;
-        public Transform firePoint;
         
-        // Start is called before the first frame update
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
