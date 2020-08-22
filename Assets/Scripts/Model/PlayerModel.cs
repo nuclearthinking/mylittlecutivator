@@ -7,7 +7,7 @@ namespace Model
     {
         public int currentHealth;
         public int maximumHealth;
-        public float movementSpeed;
+        public float movementSpeed = 4f;
         public Vector2 movement;
         public Vector2 lastMove;
         public Quaternion firePointRotation;

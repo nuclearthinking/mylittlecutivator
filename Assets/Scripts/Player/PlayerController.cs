@@ -12,8 +12,6 @@ namespace Player
 
         private Rigidbody2D rb;
         public Transform firePoint;
-        public float movementSpeed;
-        public float fireRate;
         
         // Start is called before the first frame update
         void Start()
@@ -52,10 +50,10 @@ namespace Player
             }
             if (model.movement.x >= .2f)
             {
-                model.movement.x = movementSpeed;
+                model.movement.x = model.movementSpeed;
             } else if (model.movement.x <= -.2f)
             {
-                model.movement.x = -movementSpeed;
+                model.movement.x = -model.movementSpeed;
             }
             else
             {
@@ -64,10 +62,10 @@ namespace Player
 
             if (model.movement.y >= .2f)
             {
-                model.movement.y = movementSpeed;
+                model.movement.y = model.movementSpeed;
             } else if (model.movement.y <= -.2f)
             {
-                model.movement.y = -movementSpeed;
+                model.movement.y = -model.movementSpeed;
             }
             else
             {

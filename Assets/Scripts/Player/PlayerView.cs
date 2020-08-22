@@ -39,12 +39,11 @@ namespace Player
 
         private void AttackButtonPressed()
         {
-            if (Time.time > model.nextFireTime)
-            {
-                animator.SetTrigger("Attack");
-                Simulation.Schedule<PlayerShooting>();
-            }
+            if (Time.time < model.nextFireTime) 
+                return;
             
+            animator.SetTrigger("Attack");
+            Simulation.Schedule<PlayerShooting>();
         }
     }
 }
