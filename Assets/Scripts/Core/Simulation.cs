@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace Game.Core
+namespace Core
 {
     /// <summary>
     /// The Simulation class implements the discrete event simulator pattern.

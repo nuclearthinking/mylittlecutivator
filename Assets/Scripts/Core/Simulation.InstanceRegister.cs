@@ -1,4 +1,4 @@
-﻿﻿namespace Game.Core
+﻿namespace Core
 {
     public static partial class Simulation
     {

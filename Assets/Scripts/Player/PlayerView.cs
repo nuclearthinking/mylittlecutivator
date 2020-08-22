@@ -7,6 +7,7 @@ public class PlayerView : MonoBehaviour
 
     public Joystick joystick;
     public PlayerModel model;
+    public Transform firePoint;
     
     private float xInput;
     private float yInput;
@@ -19,7 +20,6 @@ public class PlayerView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         xInput = joystick.Horizontal;
         yInput = joystick.Vertical;
 

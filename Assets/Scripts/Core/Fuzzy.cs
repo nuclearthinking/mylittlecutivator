@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Core
+namespace Core
 {
     /// <summary>
     /// Fuzzy provides methods for using values +- an amount of random deviation, or fuzz.

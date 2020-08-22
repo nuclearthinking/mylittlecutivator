@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874890696694713606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5258889832768088764}
@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3645131015912789314}
   - component: {fileID: -6294110231627777485}
   - component: {fileID: 1081870810211701729}
+  - component: {fileID: 2035582594}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -119,7 +120,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1773428102 &5258889832768088755
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -154,11 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ff902112b23414a8dfaa14bd30dbd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 4
   firePoint: {fileID: 6276036304880992637}
   animator: {fileID: 5258889832768088753}
   rb: {fileID: 5258889832768088759}
+  joystick: {fileID: 0}
   lastMove: {x: 0, y: -1}
+  playerDirection: 0
 --- !u!95 &5258889832768088753
 Animator:
   serializedVersion: 3
@@ -212,9 +215,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02, y: -0.53}
+  m_Offset: {x: -0.02, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.33077145
+  m_Radius: 0.35
 --- !u!114 &-6294110231627777485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +235,8 @@ MonoBehaviour:
     type: 3}
   arrowForce: 20
   animator: {fileID: 5258889832768088753}
-  AttackRate: 0.5
+  AttackRate: 0.3
+  attackButton: {fileID: 0}
 --- !u!114 &1081870810211701729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,3 +252,17 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+--- !u!114 &2035582594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258889832768088766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33853421b2fdc204eb0cced30e3e3eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  firePoint: {fileID: 6276036304880992637}

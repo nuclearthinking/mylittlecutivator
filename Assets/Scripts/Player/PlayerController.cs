@@ -17,6 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        throw new NotImplementedException();
+        
     }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Core;
+using Gameplay;
 
 public class Shooting : MonoBehaviour
 {
@@ -36,6 +38,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        Simulation.Schedule<PlayerShooting>();
         animator.SetTrigger("Attack");
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         Physics2D.IgnoreCollision(arrow.GetComponent<Collider2D>(), GetComponent<Collider2D>());

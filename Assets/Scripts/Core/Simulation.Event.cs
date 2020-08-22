@@ -1,6 +1,6 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Game.Core
+namespace Core
 {
     public static partial class Simulation
     {
