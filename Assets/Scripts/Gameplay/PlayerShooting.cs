@@ -1,6 +1,5 @@
 ﻿using Core;
 using Model;
-using UnityEditor;
 using UnityEngine;
 
 namespace Gameplay
@@ -15,7 +14,7 @@ namespace Gameplay
         
         public override void Execute()
         {
-            arrowPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Arrow.prefab");
+            arrowPrefab = Resources.Load<GameObject>("Prefabs/Arrow");
             gameModel = Simulation.GetModel<GameModel>();
             playerModel = Simulation.GetModel<PlayerModel>();
             var arrow = GameObject.Instantiate(
