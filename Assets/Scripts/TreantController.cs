@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -126,8 +128,11 @@ public class TreantController : MonoBehaviour
 
     private void Die()
     {
+        var killEvent = Simulation.Schedule<EnemyKilled>();
+        killEvent.treant = this; 
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        Destroy(gameObject, 5f);
         Destroy(effect, 2f);
     }
 }

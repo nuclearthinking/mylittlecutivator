@@ -1,5 +1,5 @@
-﻿using System;
-using Core;
+﻿using Core;
+using Gameplay;
 using Model;
 using UnityEngine;
 
@@ -7,12 +7,11 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
         public Transform firePoint;
 
         private Rigidbody2D rb;
-        
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -22,7 +21,7 @@ namespace Player
         {
             model.movement.x = model.xInput;
             model.movement.y = model.yInput;
-            
+
             var playerDirection = GetPlayerDirection(model.xInput, model.yInput);
             Quaternion firePointRotation;
             if (playerDirection == PlayerDirection.Zero)
@@ -47,10 +46,12 @@ namespace Player
             {
                 model.lastMove = new Vector2(0f, model.movement.y);
             }
+
             if (model.movement.x >= .2f)
             {
                 model.movement.x = model.movementSpeed;
-            } else if (model.movement.x <= -.2f)
+            }
+            else if (model.movement.x <= -.2f)
             {
                 model.movement.x = -model.movementSpeed;
             }
@@ -62,7 +63,8 @@ namespace Player
             if (model.movement.y >= .2f)
             {
                 model.movement.y = model.movementSpeed;
-            } else if (model.movement.y <= -.2f)
+            }
+            else if (model.movement.y <= -.2f)
             {
                 model.movement.y = -model.movementSpeed;
             }
@@ -70,6 +72,9 @@ namespace Player
             {
                 model.movement.y = 0f;
             }
+
+            // LEVELING
+            UpdatePlayerLevel();
         }
 
         private void FixedUpdate()
@@ -90,7 +95,7 @@ namespace Player
 
             return PlayerDirection.Zero;
         }
-        
+
         Quaternion GetFirePointRotation(PlayerDirection playerDirection)
         {
             switch (playerDirection)
@@ -106,6 +111,17 @@ namespace Player
                 default:
                     return Quaternion.identity;
             }
+        }
+
+        void UpdatePlayerLevel()
+        {
+            if (model.currentXp < model.nextLevelXp)
+                return;
+
+            model.level += 1;
+            model.currentXp = model.currentXp - model.nextLevelXp;
+            model.nextLevelXp += 100+ (int) (model.nextLevelXp * 0.5) * model.level;
+            Simulation.Schedule<PlayerLevelUp>().player = this;
         }
     }
 }

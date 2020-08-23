@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Mechanics;
+using Player;
 
 namespace Model
 {    
@@ -6,5 +7,6 @@ namespace Model
     public class GameModel
     {
         public PlayerController player;
+        public HUDController hud;
     }
 }

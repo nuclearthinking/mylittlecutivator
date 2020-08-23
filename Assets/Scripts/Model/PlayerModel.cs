@@ -7,15 +7,24 @@ namespace Model
     {
         public int currentHealth;
         public int maximumHealth;
-        public float movementSpeed = 4f;
+        
+        // MOVEMENT
+        public float movementSpeed = 4.0f;
         public Vector2 movement;
         public Vector2 lastMove;
-        public Quaternion firePointRotation;
         public float xInput;
         public float yInput;
+
+        // SHOOTING
+        public Quaternion firePointRotation;
         public float nextFireTime = .0f;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
+        
+        // LEVELING
+        public int level = 1;
+        public int currentXp;
+        public int nextLevelXp = 100;
 
         public void SetFirePointRotation(Quaternion rotation)
         {
@@ -35,6 +44,11 @@ namespace Model
         public void SetYInput(float y)
         {
             yInput = y;
+        }
+
+        public void AddXP(int xpAmount)
+        {
+            currentXp += xpAmount;
         }
         
     }
