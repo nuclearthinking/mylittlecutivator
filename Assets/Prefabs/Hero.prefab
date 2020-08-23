@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 5258889832768088753}
   - component: {fileID: 5258889832768088759}
   - component: {fileID: 3645131015912789314}
-  - component: {fileID: 1081870810211701729}
   - component: {fileID: 2035582594}
   - component: {fileID: 3028102727221866745}
   m_Layer: 0
@@ -175,21 +174,6 @@ CircleCollider2D:
   m_Offset: {x: -0.02, y: 0.03}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!114 &1081870810211701729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258889832768088766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbe51add42553f4ca807c3083fe16bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
 --- !u!114 &2035582594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,16 +202,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model:
     currentHealth: 0
-    maximumHealth: 0
-    movementSpeed: 0
+    maximumHealth: 100
+    movementSpeed: 4
     movement: {x: 0, y: 0}
-    lastMove: {x: 0, y: 0}
-    firePointRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastMove: {x: 0, y: -1}
     xInput: 0
     yInput: 0
+    firePointRotation: {x: 0, y: 0, z: 0, w: 0}
     nextFireTime: 0
     arrowForce: 20
     fireRate: 0.3
+    level: 1
+    currentXp: 0
+    nextLevelXp: 100
+    baseDamage: 20
+    criticalHitChance: 5
   firePoint: {fileID: 6276036304880992637}
-  movementSpeed: 4
-  fireRate: 0.3

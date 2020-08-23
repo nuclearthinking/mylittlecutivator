@@ -19,7 +19,7 @@ namespace Gameplay
             if (treant == null) 
                 return;
             PlayerModel player = Simulation.GetModel<PlayerModel>();
-            player.AddXP(30);
+            player.AddXp(30);
         }
     }
 }

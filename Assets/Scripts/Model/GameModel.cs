@@ -7,6 +7,6 @@ namespace Model
     public class GameModel
     {
         public PlayerController player;
-        public HUDController hud;
+        public HudController hud;
     }
 }

@@ -15,6 +15,7 @@ namespace Player
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            model.currentHealth = model.maximumHealth;
         }
 
         private void Update()
@@ -122,6 +123,11 @@ namespace Player
             model.currentXp = model.currentXp - model.nextLevelXp;
             model.nextLevelXp += 100+ (int) (model.nextLevelXp * 0.5) * model.level;
             Simulation.Schedule<PlayerLevelUp>().player = this;
+        }
+
+        void TakeDamage(int damage)
+        {
+            model.currentXp -= damage;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Model
     {
         public int currentHealth;
         public int maximumHealth;
-        
+
         // MOVEMENT
         public float movementSpeed = 4.0f;
         public Vector2 movement;
@@ -20,11 +20,15 @@ namespace Model
         public float nextFireTime = .0f;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
-        
+
         // LEVELING
         public int level = 1;
         public int currentXp;
         public int nextLevelXp = 100;
+
+        // STATS
+        public int baseDamage = 20;
+        public float criticalHitChance = 5.0f;
 
         public void SetFirePointRotation(Quaternion rotation)
         {
@@ -46,10 +50,14 @@ namespace Model
             yInput = y;
         }
 
-        public void AddXP(int xpAmount)
+        public void AddXp(int xpAmount)
         {
             currentXp += xpAmount;
         }
-        
+
+        public int GetDamageDeal()
+        {
+            return baseDamage + (int) (baseDamage * (level * 0.3));
+        }
     }
 }

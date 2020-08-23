@@ -39,11 +39,20 @@ namespace Player
 
         private void AttackButtonPressed()
         {
-            if (Time.time < model.nextFireTime) 
+            if (Time.time < model.nextFireTime)
                 return;
-            
+
             animator.SetTrigger("Attack");
             Simulation.Schedule<PlayerShooting>();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                var hurtEvent = Simulation.Schedule<HurtPlayer>();
+                hurtEvent.damageTaken = 10;
+            }
         }
     }
 }
