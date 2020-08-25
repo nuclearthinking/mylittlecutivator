@@ -8,30 +8,23 @@ namespace Mechanics
     {
         public GameObject target;
 
-        private Material outlineShaderMaterial = Resources.Load<Material>("Materials/OutlineMaterial");
+        private readonly Material outlineShaderMaterial = Resources.Load<Material>("Materials/OutlineMaterial");
 
         private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
-        private readonly GameModel gameModel = Simulation.GetModel<GameModel>();
 
         public override void Execute()
         {
             if (target == null)
                 return;
             var targetRenderer = target.GetComponent<SpriteRenderer>();
+            
+            // Если цель уже была выбрана, возвращаем ей ее дефолтный материал.
             if (inputModel.selectedTarget != null)
-            {
-                inputModel.selectedTarget.GetComponent<SpriteRenderer>().material = inputModel.selectedTargetMaterial;
-                inputModel.selectedTarget = target;
-                inputModel.selectedTargetMaterial = targetRenderer.material;
-                targetRenderer.material = outlineShaderMaterial;
-            }
-            else
-            {
-                inputModel.selectedTarget = target;
-                inputModel.selectedTargetMaterial = targetRenderer.material;
-                targetRenderer.material = outlineShaderMaterial;
-            }
-            gameModel.player.selectedTarget = target;
+                inputModel.selectedTarget.GetComponent<SpriteRenderer>().material = inputModel.selectedTargetDefaultMaterial;
+            
+            inputModel.selectedTarget = target;
+            inputModel.selectedTargetDefaultMaterial = targetRenderer.material;
+            targetRenderer.material = outlineShaderMaterial;
         }
     }
 }

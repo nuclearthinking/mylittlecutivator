@@ -8,6 +8,6 @@ namespace Model
         public bool attackButtonPressed;
         public bool joystickHandleActive;
         public GameObject selectedTarget;
-        public Material selectedTargetMaterial;
+        public Material selectedTargetDefaultMaterial;
     }
 }

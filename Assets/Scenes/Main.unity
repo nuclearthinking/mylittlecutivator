@@ -749,7 +749,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (2)
+      value: Treant Spawn 5
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -830,7 +830,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (11)
+      value: Treant Spawn 10
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -1457,7 +1457,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (13)
+      value: Treant Spawn 8
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -1532,7 +1532,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (3)
+      value: Treant Spawn 18
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -1656,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (5)
+      value: Treant Spawn 16
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -2076,7 +2076,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (4)
+      value: Treant Spawn 3
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -2151,7 +2151,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (1)
+      value: Treant Spawn 20
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -2683,7 +2683,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (10)
+      value: Treant Spawn 11
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -23274,7 +23274,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint
+      value: Treant Spawn 7
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -23379,7 +23379,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (12)
+      value: Treant Spawn 9
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -24712,7 +24712,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (4)
+      value: Treant Spawn 17
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -25174,7 +25174,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (2)
+      value: Treant Spawn 19
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -25923,7 +25923,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint
+      value: Treant Spawn 21
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -25998,7 +25998,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (6)
+      value: Treant Spawn 1
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -26221,7 +26221,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (5)
+      value: Treant Spawn 2
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -27460,7 +27460,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (1)
+      value: Treant Spawn 6
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -27754,7 +27754,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (6)
+      value: Treant Spawn 15
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -28117,7 +28117,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (7)
+      value: Treant Spawn 14
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -131772,7 +131772,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (3)
+      value: Treant Spawn 4
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -132321,7 +132321,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (8)
+      value: Treant Spawn 13
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
@@ -132750,7 +132750,7 @@ PrefabInstance:
     - target: {fileID: 9209714251188279122, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}
       propertyPath: m_Name
-      value: SpwanPoint (9)
+      value: Treant Spawn 12
       objectReference: {fileID: 0}
     - target: {fileID: 9209714251188279124, guid: 4334df66f95ba874ab080ec22c0ef4e9,
         type: 3}

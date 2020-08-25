@@ -8,8 +8,7 @@ namespace Gameplay
     {
 
         public TreantController treant;
-
-        private readonly GameModel gameModel = Simulation.GetModel<GameModel>();
+        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
         
         public override bool Precondition()
         {
@@ -20,9 +19,9 @@ namespace Gameplay
         {
             if (treant == null) 
                 return;
-            if (treant.gameObject.GetHashCode() == gameModel.player.selectedTarget.GetHashCode())
+            if (treant.gameObject.GetHashCode() == inputModel.selectedTarget.GetHashCode())
             {
-                gameModel.player.selectedTarget = null;
+                inputModel.selectedTarget = null;
             }
             
             PlayerModel player = Simulation.GetModel<PlayerModel>();

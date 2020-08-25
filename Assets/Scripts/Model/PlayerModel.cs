@@ -20,6 +20,7 @@ namespace Model
         public float nextFireTime = .0f;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
+        public float distanceToReleaseTarget;
 
         // LEVELING
         public int level = 1;
@@ -29,7 +30,7 @@ namespace Model
         // STATS
         public int baseDamage = 20;
         public float criticalHitChance = 5.0f;
-
+        
         public void SetFirePointRotation(Quaternion rotation)
         {
             firePointRotation = rotation;
