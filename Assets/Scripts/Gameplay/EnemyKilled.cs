@@ -9,6 +9,8 @@ namespace Gameplay
 
         public TreantController treant;
 
+        private readonly GameModel gameModel = Simulation.GetModel<GameModel>();
+        
         public override bool Precondition()
         {
             return treant != null;
@@ -18,6 +20,11 @@ namespace Gameplay
         {
             if (treant == null) 
                 return;
+            if (treant.gameObject.GetHashCode() == gameModel.player.selectedTarget.GetHashCode())
+            {
+                gameModel.player.selectedTarget = null;
+            }
+            
             PlayerModel player = Simulation.GetModel<PlayerModel>();
             player.AddXp(30);
         }

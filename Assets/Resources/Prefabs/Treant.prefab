@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3477338437979895716}
   - component: {fileID: 3477338437979895720}
   - component: {fileID: 3477338437979895723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Treant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -173,7 +173,6 @@ MonoBehaviour:
   treantHealthBar: {fileID: 8181319576412920844}
   damageText: {fileID: -8301144193936185069, guid: c89d4657c2d04cb46ada3d5103cc6893,
     type: 3}
-  waitToReload: 5
   hitPoints: 100
   deathEffect: {fileID: 3802082717995975997, guid: dd653577162a54943ac7bc93f267d160,
     type: 3}
@@ -189,7 +188,7 @@ GameObject:
   - component: {fileID: 4871614906429275944}
   - component: {fileID: 841270801030280602}
   - component: {fileID: 1138725029043368207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,6 +282,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3376890585999107815}
     m_Modifications:
+    - target: {fileID: 2419135504404197690, guid: ed9ba90030e043c419e569c10b30beae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3342007831632643485, guid: ed9ba90030e043c419e569c10b30beae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,6 +407,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4531075304823584008, guid: ed9ba90030e043c419e569c10b30beae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7151033034827177885, guid: ed9ba90030e043c419e569c10b30beae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -417,6 +426,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBarWithoutHeart
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294787824874668355, guid: ed9ba90030e043c419e569c10b30beae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed9ba90030e043c419e569c10b30beae, type: 3}

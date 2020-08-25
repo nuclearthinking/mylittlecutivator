@@ -10,6 +10,7 @@ namespace Player
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
         public Transform firePoint;
 
+        public GameObject selectedTarget;
         private Rigidbody2D rb;
 
         void Start()
@@ -99,6 +100,14 @@ namespace Player
 
         Quaternion GetFirePointRotation(PlayerDirection playerDirection)
         {
+            if (selectedTarget != null)
+            {
+                var playerRbpos = firePoint.position;
+                var targetPos = selectedTarget.transform.position;
+                Vector2 lookAt = new Vector2(targetPos.x, targetPos.y) - new Vector2(playerRbpos.x, playerRbpos.y);
+                float angle = Mathf.Atan2(lookAt.y, lookAt.x)* Mathf.Rad2Deg - 90f;
+                return Quaternion.Euler(0f, 0f, angle);
+            }
             switch (playerDirection)
             {
                 case PlayerDirection.Right:
@@ -121,7 +130,7 @@ namespace Player
 
             model.level += 1;
             model.currentXp = model.currentXp - model.nextLevelXp;
-            model.nextLevelXp += 100+ (int) (model.nextLevelXp * 0.5) * model.level;
+            model.nextLevelXp += 100 + (int) (model.nextLevelXp * 0.5) * model.level;
             Simulation.Schedule<PlayerLevelUp>().player = this;
         }
 

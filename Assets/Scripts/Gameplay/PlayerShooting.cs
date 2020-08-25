@@ -7,15 +7,13 @@ namespace Gameplay
     public class PlayerShooting : Simulation.Event<PlayerShooting>
     {
 
-        private GameModel gameModel;
-        private PlayerModel playerModel;
+        private readonly GameModel gameModel = Simulation.GetModel<GameModel>();
+        private readonly PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
         
         
         public override void Execute()
         {
             var arrowPrefab = Resources.Load<GameObject>("Prefabs/Arrow");
-            gameModel = Simulation.GetModel<GameModel>();
-            playerModel = Simulation.GetModel<PlayerModel>();
             var arrow = GameObject.Instantiate(
                 arrowPrefab, 
                 gameModel.player.firePoint.position, 

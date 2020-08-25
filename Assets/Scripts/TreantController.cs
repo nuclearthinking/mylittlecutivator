@@ -22,10 +22,6 @@ public class TreantController : MonoBehaviour
     private Vector3 _moveDirection;
     private Vector2 _lastMove;
 
-    public float waitToReload;
-    private bool reloading = false;
-
-    private GameObject thePlayer;
 
     public int hitPoints = 100;
     public GameObject deathEffect;
@@ -54,15 +50,15 @@ public class TreantController : MonoBehaviour
         animator.SetFloat("LastMoveX", _lastMove.x);
         animator.SetFloat("LastMoveY", _lastMove.y);
 
-        if (reloading)
-        {
-            waitToReload -= Time.deltaTime;
-            if (waitToReload < 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                thePlayer.SetActive(true);
-            }
-        }
+        // if (reloading)
+        // {
+            // waitToReload -= Time.deltaTime;
+            // if (waitToReload < 0)
+            // {
+                // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                // thePlayer.SetActive(true);
+            // }
+        // }
     }
 
     private void FixedUpdate()
