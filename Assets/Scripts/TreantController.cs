@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Core;
+﻿using Core;
 using Gameplay;
 using Mechanics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
-public class TreantController : MonoBehaviour, IPointerClickHandler
+public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public float movementSpeed;
     public Rigidbody2D rb;
@@ -54,12 +49,12 @@ public class TreantController : MonoBehaviour, IPointerClickHandler
 
         // if (reloading)
         // {
-            // waitToReload -= Time.deltaTime;
-            // if (waitToReload < 0)
-            // {
-                // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                // thePlayer.SetActive(true);
-            // }
+        // waitToReload -= Time.deltaTime;
+        // if (waitToReload < 0)
+        // {
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // thePlayer.SetActive(true);
+        // }
         // }
     }
 
@@ -127,14 +122,19 @@ public class TreantController : MonoBehaviour, IPointerClickHandler
     private void Die()
     {
         var killEvent = Simulation.Schedule<EnemyKilled>();
-        killEvent.treant = this; 
+        killEvent.treant = this;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
         Destroy(gameObject, 5f);
         Destroy(effect, 2f);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Simulation.Schedule<EnemySelected>().target = gameObject;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
     {
         Simulation.Schedule<EnemySelected>().target = gameObject;
     }
