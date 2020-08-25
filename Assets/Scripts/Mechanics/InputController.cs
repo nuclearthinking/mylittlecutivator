@@ -1,88 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Core;
-using Gameplay;
 using Model;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Mechanics
 {
-    public class InputController : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+    public class InputController : MonoBehaviour
     {
         public Joystick joystick;
         public Button attackButton;
-        public LayerMask enemyLayers;
 
 
-        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
         private readonly PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
-
-        private void Awake()
-        {
-        }
 
         private void Update()
         {
             playerModel.xInput = joystick.Horizontal;
             playerModel.yInput = joystick.Vertical;
-            
-            CheckIsEnemySelected();
         }
 
-        private void CheckIsEnemySelected()
-        {
-            if (inputModel.attackButtonPressed)
-                return;
-
-            if (inputModel.joystickHandleActive && Input.touchCount == 0)
-                return;
-            
-            var mouseClickPosition = GetMouseWorldClickPosition();
-            var touches = GetTouchWorldPositions();
-
-            if (mouseClickPosition != null)
-            {
-                Collider2D[] collides = new Collider2D[20];
-                Physics2D.OverlapCircleNonAlloc((Vector2) mouseClickPosition, 0.7f, collides, enemyLayers);
-                foreach (var collide in collides)
-                {
-                    if (collide != null)
-                        Simulation.Schedule<EnemySelected>().target = collide.gameObject;
-                }
-            }
-            else if (touches.Count > 0)
-            {
-                foreach (var touch in touches)
-                {
-                    Collider2D[] collides = new Collider2D[20];
-                    Physics2D.OverlapCircleNonAlloc(touch, 0.7f, collides, enemyLayers);
-
-                    foreach (var collide in collides)
-                    {
-                        if (collide != null)
-                            Simulation.Schedule<EnemySelected>().target = collide.gameObject;
-                    }
-                }
-            }
-        }
-
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            Debug.Log("Pointer down" + eventData);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            Debug.Log("Pointer drag " + eventData);
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-        }
 
         private void OnDrawGizmos()
         {
@@ -125,7 +63,7 @@ namespace Mechanics
         private List<Vector3> GetTouchWorldPositions()
         {
             var cam = Camera.main;
-            List<Vector3> touches = new List<Vector3>();
+            var touches = new List<Vector3>();
             if (Input.touchCount > 0)
             {
                 foreach (var touch in Input.touches)

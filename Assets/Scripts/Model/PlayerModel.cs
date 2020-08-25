@@ -17,10 +17,10 @@ namespace Model
 
         // SHOOTING
         public Quaternion firePointRotation;
-        public float nextFireTime = .0f;
+        public float nextFireTime;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
-        public float distanceToReleaseTarget;
+        public float distanceToReleaseTarget = 15;
 
         // LEVELING
         public int level = 1;

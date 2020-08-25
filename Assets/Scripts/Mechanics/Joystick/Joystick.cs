@@ -35,7 +35,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
-    private InputModel inputModel = Simulation.GetModel<InputModel>();
     
     private RectTransform baseRect = null;
 
@@ -64,7 +63,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
-        inputModel.joystickHandleActive = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -138,7 +136,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
-        inputModel.joystickHandleActive = false;
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Model
-{    
-    [System.Serializable]
+{
+    [Serializable]
     public class InputModel
     {
-        public bool attackButtonPressed;
-        public bool joystickHandleActive;
         public GameObject selectedTarget;
         public Material selectedTargetDefaultMaterial;
     }

@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using Gameplay;
+using Mechanics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class TreantController : MonoBehaviour
+public class TreantController : MonoBehaviour, IPointerClickHandler
 {
     public float movementSpeed;
     public Rigidbody2D rb;
@@ -130,5 +132,10 @@ public class TreantController : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(gameObject, 5f);
         Destroy(effect, 2f);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Simulation.Schedule<EnemySelected>().target = gameObject;
     }
 }

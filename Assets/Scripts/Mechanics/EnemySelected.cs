@@ -17,11 +17,12 @@ namespace Mechanics
             if (target == null)
                 return;
             var targetRenderer = target.GetComponent<SpriteRenderer>();
-            
+
             // Если цель уже была выбрана, возвращаем ей ее дефолтный материал.
             if (inputModel.selectedTarget != null)
-                inputModel.selectedTarget.GetComponent<SpriteRenderer>().material = inputModel.selectedTargetDefaultMaterial;
-            
+                inputModel.selectedTarget.GetComponent<SpriteRenderer>().material =
+                    inputModel.selectedTargetDefaultMaterial;
+
             inputModel.selectedTarget = target;
             inputModel.selectedTargetDefaultMaterial = targetRenderer.material;
             targetRenderer.material = outlineShaderMaterial;

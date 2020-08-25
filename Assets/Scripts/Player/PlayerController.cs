@@ -152,9 +152,9 @@ namespace Player
             Simulation.Schedule<PlayerLevelUp>().player = this;
         }
 
-        void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
-            model.currentXp -= damage;
+            model.currentHealth -= damage;
         }
     }
 }
