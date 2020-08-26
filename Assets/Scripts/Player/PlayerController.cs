@@ -79,7 +79,9 @@ namespace Player
             // LEVELING
             UpdatePlayerLevel();
 
+            // OTHER
             CheckDistanceToTarget();
+            LookAtSelectedTarget();
         }
 
         private void FixedUpdate()
@@ -105,9 +107,9 @@ namespace Player
         {
             if (inputModel.selectedTarget != null)
             {
-                var playerRbpos = firePoint.position;
+                var firePointPosition = firePoint.position;
                 var targetPos = inputModel.selectedTarget.transform.position;
-                Vector2 lookAt = new Vector2(targetPos.x, targetPos.y) - new Vector2(playerRbpos.x, playerRbpos.y);
+                Vector2 lookAt = GetLookAtPosition(firePointPosition, targetPos);
                 float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90f;
                 return Quaternion.Euler(0f, 0f, angle);
             }
@@ -138,7 +140,23 @@ namespace Player
             if (distance >= model.distanceToReleaseTarget)
             {
                 Simulation.Schedule<ReleaseEnemySelection>();
-            } 
+            }
+        }
+
+        void LookAtSelectedTarget()
+        {
+            if (inputModel.selectedTarget == null)
+                return;
+            var lookAtPosition = GetLookAtPosition(
+                firePoint.position, inputModel.selectedTarget.transform.position
+            );
+            model.lastMove.x = lookAtPosition.x;
+            model.lastMove.y = lookAtPosition.y;
+        }
+
+        private Vector2 GetLookAtPosition(Vector3 subjectPos, Vector3 targetPos)
+        {
+            return new Vector2(targetPos.x, targetPos.y) - new Vector2(subjectPos.x, subjectPos.y);
         }
 
         void UpdatePlayerLevel()

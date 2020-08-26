@@ -12,7 +12,6 @@ namespace Player
         public Button attackButton;
         private readonly PlayerModel model = Simulation.GetModel<PlayerModel>();
 
-        public GameObject treant;
         private Animator animator;
 
         private void Awake()
@@ -20,7 +19,6 @@ namespace Player
             animator = GetComponent<Animator>();
             attackButton.onClick.AddListener(AttackButtonPressed);
         }
-        GameObject newTreant;
 
         void Update()
         {    
