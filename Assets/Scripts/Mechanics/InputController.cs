@@ -11,9 +11,15 @@ namespace Mechanics
     {
         public Joystick joystick;
         public Button attackButton;
-
+        public Button selectTaretButton;
 
         private readonly PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
+        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
+
+        private void Awake()
+        {
+            selectTaretButton.onClick.AddListener(SelectEnemyButtonClicked);
+        }
 
         private void Update()
         {
@@ -21,6 +27,11 @@ namespace Mechanics
             playerModel.yInput = joystick.Vertical;
         }
 
+
+        private void SelectEnemyButtonClicked()
+        {
+            SelectNearestEnemy();
+        }
 
         private void OnDrawGizmos()
         {
@@ -81,6 +92,26 @@ namespace Mechanics
             }
 
             return touches;
+        }
+
+        private void SelectNearestEnemy()
+        {
+            if (inputModel.nearEnemies.Count == 0)
+                return;
+            Vector3 playerPosition = playerModel.position;
+            GameObject closestEnemy = null;
+            float minimalDistance = 999f;
+            foreach (var enemy in inputModel.nearEnemies)
+            {
+                var distance = Vector3.Distance(enemy.transform.position, playerPosition);
+                if (distance < minimalDistance)
+                {
+                    closestEnemy = enemy;
+                    minimalDistance = distance;
+                }
+            }
+
+            Simulation.Schedule<EnemySelected>().target = closestEnemy;
         }
     }
 }

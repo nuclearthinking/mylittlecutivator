@@ -9,6 +9,8 @@ namespace Model
         public int maximumHealth;
 
         // MOVEMENT
+        public Vector3 position;
+        
         public float movementSpeed = 4.0f;
         public Vector2 movement;
         public Vector2 lastMove;
@@ -30,6 +32,8 @@ namespace Model
         // STATS
         public int baseDamage = 20;
         public float criticalHitChance = 5.0f;
+        
+        
         
         public void SetFirePointRotation(Quaternion rotation)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Model
@@ -8,5 +9,6 @@ namespace Model
     {
         public GameObject selectedTarget;
         public Material selectedTargetDefaultMaterial;
+        public List<GameObject> nearEnemies = new List<GameObject>(); 
     }
 }

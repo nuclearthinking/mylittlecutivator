@@ -23,7 +23,10 @@ namespace Player
         GameObject newTreant;
 
         void Update()
-        {
+        {    
+            // UPDATE MODEL
+            model.position = gameObject.transform.position;
+            
             // MODIFY VIEW
             animator.SetFloat("Horizontal", model.movement.x);
             animator.SetFloat("Vertical", model.movement.y);
