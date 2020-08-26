@@ -30,6 +30,53 @@ Transform:
   m_Father: {fileID: 5258889832768088764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2738272239485553787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8794120162525878770}
+  - component: {fileID: 7723792692903321537}
+  m_Layer: 0
+  m_Name: Locator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8794120162525878770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738272239485553787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5258889832768088764}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7723792692903321537
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738272239485553787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.015859604, y: 0}
+  serializedVersion: 2
+  m_Radius: 9
 --- !u!1 &5258889832768088766
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6276036304880992637}
+  - {fileID: 8794120162525878770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33853421b2fdc204eb0cced30e3e3eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
   attackButton: {fileID: 0}
+  treant: {fileID: 3477338437979895717, guid: 59210dbf626279a46a7e70081bd92038, type: 3}
 --- !u!114 &3028102727221866745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +260,7 @@ MonoBehaviour:
     nextFireTime: 0
     arrowForce: 20
     fireRate: 0.3
+    distanceToReleaseTarget: 0
     level: 1
     currentXp: 0
     nextLevelXp: 100

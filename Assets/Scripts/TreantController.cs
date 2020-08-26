@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Core;
+﻿using Core;
 using Gameplay;
+using Mechanics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-public class TreantController : MonoBehaviour
+public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public float movementSpeed;
     public Rigidbody2D rb;
@@ -22,10 +19,6 @@ public class TreantController : MonoBehaviour
     private Vector3 _moveDirection;
     private Vector2 _lastMove;
 
-    public float waitToReload;
-    private bool reloading = false;
-
-    private GameObject thePlayer;
 
     public int hitPoints = 100;
     public GameObject deathEffect;
@@ -54,15 +47,15 @@ public class TreantController : MonoBehaviour
         animator.SetFloat("LastMoveX", _lastMove.x);
         animator.SetFloat("LastMoveY", _lastMove.y);
 
-        if (reloading)
-        {
-            waitToReload -= Time.deltaTime;
-            if (waitToReload < 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                thePlayer.SetActive(true);
-            }
-        }
+        // if (reloading)
+        // {
+        // waitToReload -= Time.deltaTime;
+        // if (waitToReload < 0)
+        // {
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // thePlayer.SetActive(true);
+        // }
+        // }
     }
 
     private void FixedUpdate()
@@ -129,10 +122,20 @@ public class TreantController : MonoBehaviour
     private void Die()
     {
         var killEvent = Simulation.Schedule<EnemyKilled>();
-        killEvent.treant = this; 
+        killEvent.treant = this;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
         Destroy(gameObject, 5f);
         Destroy(effect, 2f);
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Simulation.Schedule<EnemySelected>().target = gameObject;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Simulation.Schedule<EnemySelected>().target = gameObject;
     }
 }

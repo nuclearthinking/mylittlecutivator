@@ -9,7 +9,6 @@ namespace Player
 {
     public class PlayerView : MonoBehaviour
     {
-        public Joystick joystick;
         public Button attackButton;
         private readonly PlayerModel model = Simulation.GetModel<PlayerModel>();
 
@@ -22,11 +21,10 @@ namespace Player
         }
 
         void Update()
-        {
-            // GET INPUT
-            model.xInput = joystick.Horizontal;
-            model.yInput = joystick.Vertical;
-
+        {    
+            // UPDATE MODEL
+            model.position = gameObject.transform.position;
+            
             // MODIFY VIEW
             animator.SetFloat("Horizontal", model.movement.x);
             animator.SetFloat("Vertical", model.movement.y);

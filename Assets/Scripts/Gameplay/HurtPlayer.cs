@@ -7,10 +7,10 @@ namespace Gameplay
     {
 
         public int damageTaken;
-        private PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
+        private readonly GameModel gameModel = Simulation.GetModel<GameModel>();
         public override void Execute()
         {
-            playerModel.currentHealth -= damageTaken;
+            gameModel.player.TakeDamage(damageTaken);
         }
     }
 }
