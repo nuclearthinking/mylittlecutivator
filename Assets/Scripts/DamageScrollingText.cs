@@ -10,11 +10,6 @@ public class DamageScrollingText : MonoBehaviour
     public int damageAmount;
     public Text displayTextElement;
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {    
         displayTextElement.text = Convert.ToString(damageAmount);

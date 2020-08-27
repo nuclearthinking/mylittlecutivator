@@ -91,15 +91,6 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        // if (other.gameObject.name == "Hero")
-        // {
-        //     other.gameObject.SetActive(false);
-        //     reloading = true;
-        //     thePlayer = other.gameObject;
-        // }
-    }
 
     public void TakeDamage(int damage)
     {
