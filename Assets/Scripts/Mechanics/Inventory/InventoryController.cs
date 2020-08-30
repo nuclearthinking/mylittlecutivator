@@ -24,5 +24,11 @@ namespace Mechanics.Inventory
             inventory.Add(item);
             onInventoryChangedCallback?.Invoke();
         }
+
+        public void RemoveItem(Item item)
+        {
+            inventory.Remove(item);
+            onInventoryChangedCallback?.Invoke();
+        }
     }
 }

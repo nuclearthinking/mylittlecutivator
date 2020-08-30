@@ -30,7 +30,7 @@ namespace Mechanics.Inventory
             var removeItem = item.Use();
 
             if (removeItem)
-                ClearSlot();
+                InventoryController.Instance.RemoveItem(item);
         }
     }
 }

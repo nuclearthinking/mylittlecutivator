@@ -15,8 +15,7 @@ namespace Model
         public float xInput;
         public float yInput;
 
-        // SHOOTING
-        public Quaternion firePointRotation;
+
         public float nextFireTime;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
@@ -29,17 +28,6 @@ namespace Model
         // STATS
         public int baseDamage = 20;
         public float criticalHitChance = 5.0f;
-
-
-        public void SetFirePointRotation(Quaternion rotation)
-        {
-            firePointRotation = rotation;
-        }
-
-        public Quaternion GetFirePointRotation()
-        {
-            return firePointRotation;
-        }
 
         public void SetXInput(float x)
         {
