@@ -5,7 +5,7 @@ namespace Model
     [System.Serializable]
     public class PlayerModel
     {
-        public int currentHealth;
+        private int currentHealth;
         public int maximumHealth;
 
         // MOVEMENT
@@ -29,9 +29,8 @@ namespace Model
         // STATS
         public int baseDamage = 20;
         public float criticalHitChance = 5.0f;
-        
-        
-        
+
+
         public void SetFirePointRotation(Quaternion rotation)
         {
             firePointRotation = rotation;
@@ -60,6 +59,22 @@ namespace Model
         public int GetDamageDeal()
         {
             return baseDamage + (int) (baseDamage * (level * 0.3));
+        }
+
+        public void IncrementHealth(int health)
+        {
+            currentHealth += health;
+            currentHealth = currentHealth >= maximumHealth ? maximumHealth : currentHealth;
+        }
+
+        public void DecrementHealth(int health)
+        {
+            currentHealth -= health;
+        }
+
+        public int GetHealth()
+        {
+            return currentHealth;
         }
     }
 }

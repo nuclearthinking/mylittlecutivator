@@ -38,7 +38,6 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         treantHealthBar.SetMaxHealth(hitPoints);
     }
 
-    // Update is called once per frame
     void Update()
     {
         animator.SetFloat("Horizontal", movement.x);
@@ -46,16 +45,6 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         animator.SetBool("Moving", _moving);
         animator.SetFloat("LastMoveX", _lastMove.x);
         animator.SetFloat("LastMoveY", _lastMove.y);
-
-        // if (reloading)
-        // {
-        // waitToReload -= Time.deltaTime;
-        // if (waitToReload < 0)
-        // {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // thePlayer.SetActive(true);
-        // }
-        // }
     }
 
     private void FixedUpdate()
@@ -116,6 +105,7 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
         killEvent.treant = this;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
+        CheckDrop();
         Destroy(gameObject, 5f);
         Destroy(effect, 2f);
     }
@@ -128,5 +118,16 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     public void OnPointerDown(PointerEventData eventData)
     {
         Simulation.Schedule<EnemySelected>().target = gameObject;
+    }
+
+    void CheckDrop()
+    {
+        var randomNumber = Random.Range(1, 100);
+        if (randomNumber < 30)
+        {
+            var spawnItemEvent = Simulation.Schedule<SpawnItem>();
+            spawnItemEvent.position = gameObject.transform;
+            spawnItemEvent.item = Resources.Load<GameObject>("Items/Apple");
+        }
     }
 }

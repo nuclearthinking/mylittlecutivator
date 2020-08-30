@@ -23,7 +23,7 @@ namespace Mechanics
         private void Start()
         {
             hpBar.maxValue = playerModel.maximumHealth;
-            hpBar.value = playerModel.currentHealth;
+            hpBar.value = playerModel.GetHealth();
         }
 
         private void Update()
@@ -31,7 +31,7 @@ namespace Mechanics
             xpBar.maxValue = playerModel.nextLevelXp;
             xpBar.value = playerModel.currentXp;
             level.text = playerModel.level.ToString();
-            hpBar.value = playerModel.currentHealth;
+            hpBar.value = playerModel.GetHealth();
             hpBarFill.color = hpBarGradient.Evaluate(hpBar.normalizedValue);
         }
     }

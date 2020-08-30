@@ -17,7 +17,7 @@ namespace Player
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            model.currentHealth = model.maximumHealth;
+            model.IncrementHealth(model.maximumHealth);
         }
 
         private void Update()
@@ -172,7 +172,7 @@ namespace Player
 
         public void TakeDamage(int damage)
         {
-            model.currentHealth -= damage;
+            model.DecrementHealth(damage);
         }
     }
 }

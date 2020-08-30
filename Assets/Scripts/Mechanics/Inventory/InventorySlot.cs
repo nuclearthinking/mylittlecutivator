@@ -25,5 +25,12 @@ namespace Mechanics.Inventory
             icon.enabled = false;
         }
 
+        public void SlotClick()
+        {
+            var removeItem = item.Use();
+
+            if (removeItem)
+                ClearSlot();
+        }
     }
 }
