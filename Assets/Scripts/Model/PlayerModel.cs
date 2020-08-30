@@ -10,8 +10,6 @@ namespace Model
 
         // MOVEMENT
         public Vector3 position;
-        
-        public float movementSpeed = 4.0f;
         public Vector2 movement;
         public Vector2 lastMove;
         public float xInput;
@@ -22,7 +20,6 @@ namespace Model
         public float nextFireTime;
         public float arrowForce = 20f;
         public float fireRate = 0.3f;
-        public float distanceToReleaseTarget = 15;
 
         // LEVELING
         public int level = 1;

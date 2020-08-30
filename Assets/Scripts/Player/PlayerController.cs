@@ -9,8 +9,8 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
-        public readonly InputModel inputModel = Simulation.GetModel<InputModel>();
         public Transform firePoint;
+        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
 
         private Rigidbody2D rb;
 
@@ -52,11 +52,11 @@ namespace Player
 
             if (model.movement.x >= .2f)
             {
-                model.movement.x = model.movementSpeed;
+                model.movement.x = Config.MovementSpeed;
             }
             else if (model.movement.x <= -.2f)
             {
-                model.movement.x = -model.movementSpeed;
+                model.movement.x = -Config.MovementSpeed;
             }
             else
             {
@@ -65,11 +65,11 @@ namespace Player
 
             if (model.movement.y >= .2f)
             {
-                model.movement.y = model.movementSpeed;
+                model.movement.y = Config.MovementSpeed;
             }
             else if (model.movement.y <= -.2f)
             {
-                model.movement.y = -model.movementSpeed;
+                model.movement.y = -Config.MovementSpeed;
             }
             else
             {
@@ -137,7 +137,7 @@ namespace Player
                 gameObject.transform.position,
                 inputModel.selectedTarget.transform.position
             );
-            if (distance >= model.distanceToReleaseTarget)
+            if (distance >= Config.DistanceToReleaseTarget)
             {
                 Simulation.Schedule<ReleaseEnemySelection>();
             }
