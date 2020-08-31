@@ -23,7 +23,8 @@ namespace Mechanics.Stats
 
         private bool isDirty = true;
         private float lastValue;
-
+        private float percentSum;
+        
         private readonly List<StatModifier> statModifiers;
 
         public CharacterStats(float baseValue)
@@ -64,10 +65,10 @@ namespace Mechanics.Stats
                 }
                 else if (modifier.type == StatModifierType.Percent)
                 {
-                    finalValue *= 1 + modifier.value;
+                    percentSum += modifier.value;
                 }
             }
-
+            finalValue *= 1 + percentSum;
             return (float) Math.Round(finalValue, 4);
         }
     }

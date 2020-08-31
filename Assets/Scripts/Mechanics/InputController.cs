@@ -61,13 +61,12 @@ namespace Mechanics
                 Vector3 mouseClickPosition = cam.ScreenToWorldPoint(new Vector3(
                         mousePosition.x,
                         mousePosition.y,
-                        12
+                        Math.Abs(cam.transform.position.z)
                     )
                 );
                 mouseClickPosition.z = 0;
                 return mouseClickPosition;
             }
-
             return null;
         }
 
