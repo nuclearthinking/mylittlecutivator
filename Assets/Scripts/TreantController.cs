@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System.Collections.Generic;
+using Core;
 using Gameplay;
 using Mechanics;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
     private Vector3 _moveDirection;
     private Vector2 _lastMove;
 
+    public Model.DropItemChance[] dropList;
 
     public int hitPoints = 100;
     public GameObject deathEffect;
@@ -122,12 +124,15 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
 
     void CheckDrop()
     {
-        var randomNumber = Random.Range(1, 100);
-        if (randomNumber < 30)
+        foreach (var drop in dropList)
         {
-            var spawnItemEvent = Simulation.Schedule<SpawnItem>();
-            spawnItemEvent.position = gameObject.transform;
-            spawnItemEvent.item = Resources.Load<GameObject>("Items/Apple");
+            var roll = drop.Roll();
+            if (roll != null)
+            {
+                var spawnItemEvent = Simulation.Schedule<SpawnItem>();
+                spawnItemEvent.position = gameObject.transform;
+                spawnItemEvent.item = roll;
+            }
         }
     }
 }
