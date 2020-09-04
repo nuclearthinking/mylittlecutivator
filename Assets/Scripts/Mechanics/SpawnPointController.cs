@@ -7,13 +7,12 @@ namespace Mechanics
     {
         public string prefabPath;
         public float spawnTreshold = 5f;
-
-
-        private float killedAt;
-        private GameObject spawnedCreature;
+        [SerializeField] private float spawnTimer;
+        [SerializeField] private GameObject spawnedCreature;
         private GameObject creatureToSpawn;
         private void Start()
         {
+            spawnTimer = spawnTreshold;
             if (prefabPath != null)
             {
                 creatureToSpawn = Resources.Load<GameObject>(prefabPath);
@@ -23,11 +22,25 @@ namespace Mechanics
 
         private void Update()
         {
-            if (spawnedCreature == null && Time.time >= killedAt + spawnTreshold)
+            if (IsAttachedCreatureDead())
             {
-                killedAt = Time.time;
-                spawnedCreature = Instantiate(creatureToSpawn, transform.position, Quaternion.identity);
+                spawnTimer -= Time.deltaTime;    
             }
+            if (spawnTimer <= .0f)
+            {
+                spawnedCreature = Instantiate(creatureToSpawn, transform.position, Quaternion.identity);
+                spawnTimer = spawnTreshold;
+            }
+        }
+
+
+        bool IsAttachedCreatureDead()
+        {
+            if (spawnedCreature != null)
+            {
+                return spawnedCreature.activeSelf;
+            }
+            return spawnedCreature == null;
         }
         
         void OnDrawGizmos()

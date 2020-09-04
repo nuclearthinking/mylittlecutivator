@@ -53,11 +53,11 @@ namespace Player
 
             if (model.movement.x >= .2f)
             {
-                model.movement.x = Config.MovementSpeed;
+                model.movement.x = GameController.Instance.Config.MovementSpeed;
             }
             else if (model.movement.x <= -.2f)
             {
-                model.movement.x = -Config.MovementSpeed;
+                model.movement.x = -GameController.Instance.Config.MovementSpeed;
             }
             else
             {
@@ -66,11 +66,11 @@ namespace Player
 
             if (model.movement.y >= .2f)
             {
-                model.movement.y = Config.MovementSpeed;
+                model.movement.y = GameController.Instance.Config.MovementSpeed;
             }
             else if (model.movement.y <= -.2f)
             {
-                model.movement.y = -Config.MovementSpeed;
+                model.movement.y = -GameController.Instance.Config.MovementSpeed;
             }
             else
             {
@@ -138,7 +138,7 @@ namespace Player
                 gameObject.transform.position,
                 inputModel.selectedTarget.transform.position
             );
-            if (distance >= Config.DistanceToReleaseTarget)
+            if (distance >= GameController.Instance.Config.DistanceToReleaseTarget)
             {
                 Simulation.Schedule<ReleaseEnemySelection>();
             }

@@ -8,8 +8,11 @@ namespace Mechanics
     public class GameController : MonoBehaviour
     {
         public static GameController Instance { get; private set; }
-
         public GameModel model = Simulation.GetModel<GameModel>();
+
+        [SerializeField] protected Config gameConfig;
+
+        public Config Config => this.gameConfig;
 
         private void OnEnable()
         {

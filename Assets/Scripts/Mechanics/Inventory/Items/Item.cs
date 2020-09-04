@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Inventory.Items
 {
-    [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item", order = 0)]
     public class Item : ScriptableObject
     {
         public new string name = "New Item";

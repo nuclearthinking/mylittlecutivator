@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Mechanics.Inventory.Items;
 using UnityEngine;
 
 namespace Mechanics.Inventory

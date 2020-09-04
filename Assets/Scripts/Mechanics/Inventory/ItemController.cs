@@ -1,5 +1,6 @@
 ﻿using System;
 using Mechanics.Inventory;
+using Mechanics.Inventory.Items;
 using UnityEngine;
 
 namespace Mechanics

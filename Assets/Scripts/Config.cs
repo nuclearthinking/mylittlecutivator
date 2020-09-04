@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
 
+[CreateAssetMenu(fileName = "Config", order = 0)]
 public class Config : ScriptableObject
 {
-    public const float MovementSpeed = 4.0f;
-    public const float DistanceToReleaseTarget = 15;
+    [SerializeField] public float MovementSpeed = 4.0f;
+    [SerializeField] public float DistanceToReleaseTarget = 15;
 }

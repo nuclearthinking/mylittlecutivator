@@ -5,7 +5,7 @@ namespace Model
     [System.Serializable]
     public class PlayerModel
     {
-        private int currentHealth;
+        [SerializeField] private int currentHealth;
         public int maximumHealth;
 
         // MOVEMENT
