@@ -1,0 +1,14 @@
+﻿using Player;
+using UnityEngine;
+
+namespace Mechanics.Inventory.Items
+{
+    [CreateAssetMenu(fileName = "Sword", menuName = "Inventory/Sword")]
+    public class Sword : WeaponItem
+    {
+        Sword()
+        {
+            type = WeaponType.Sword;
+        }
+    }
+}

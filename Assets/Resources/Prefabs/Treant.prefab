@@ -176,6 +176,8 @@ MonoBehaviour:
   dropList:
   - item: {fileID: 8939667928679176607, guid: f3aa898c040803c40b606901606dfc18, type: 3}
     chance: 30
+  - item: {fileID: 2142689692166528244, guid: 4b17fd33165cdd7439005f0478000e19, type: 3}
+    chance: 10
   hitPoints: 100
   deathEffect: {fileID: 3802082717995975997, guid: dd653577162a54943ac7bc93f267d160,
     type: 3}
