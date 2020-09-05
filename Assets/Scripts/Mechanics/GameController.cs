@@ -11,7 +11,18 @@ namespace Mechanics
         public GameModel model = Simulation.GetModel<GameModel>();
 
         [SerializeField] protected Config gameConfig;
+        [SerializeField] protected AnimationCurve levelingDifficulty;
 
+        private void Start()
+        {
+            // Physics2D.IgnoreLayerCollision(9,8, true);
+        }
+
+        public int GetExpToNextLevel(int currentLevel)
+        {
+            return (int) levelingDifficulty.Evaluate(currentLevel);
+        }
+        
         public Config Config => this.gameConfig;
 
         private void OnEnable()

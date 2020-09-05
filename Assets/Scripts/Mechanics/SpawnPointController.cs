@@ -38,7 +38,7 @@ namespace Mechanics
         {
             if (spawnedCreature != null)
             {
-                return spawnedCreature.activeSelf;
+                return !spawnedCreature.activeSelf;
             }
             return spawnedCreature == null;
         }

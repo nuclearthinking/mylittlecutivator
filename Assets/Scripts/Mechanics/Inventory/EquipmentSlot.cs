@@ -9,5 +9,7 @@ namespace Mechanics.Inventory
         [SerializeField] private Equipment item;
 
         [SerializeField] private Image icon;
+
+        [SerializeField] private ArmorType armorType;
     }
 }
