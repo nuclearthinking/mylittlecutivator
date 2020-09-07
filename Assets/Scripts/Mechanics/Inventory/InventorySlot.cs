@@ -8,12 +8,11 @@ namespace Mechanics.Inventory
     {
         public Image icon;
 
-        private Item item;
+        protected Item item;
 
         public void AddItem(Item newItem)
         {
             item = newItem;
-
             icon.sprite = item.icon;
             icon.enabled = true;
         }
@@ -26,7 +25,7 @@ namespace Mechanics.Inventory
             icon.enabled = false;
         }
 
-        public void SlotClick()
+        public virtual void SlotClick()
         {
             var removeItem = item.Use();
 

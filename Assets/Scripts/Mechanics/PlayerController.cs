@@ -29,7 +29,7 @@ namespace Player
 
             var playerDirection = GetPlayerDirection(model.xInput, model.yInput);
             Quaternion firePointRotation;
-            if (playerDirection == PlayerDirection.Zero)
+            if (playerDirection == Enums.PlayerDirection.Zero)
             {
                 var lastPlayerDirection = GetPlayerDirection(model.lastMove.x, model.lastMove.y);
                 firePointRotation = GetFirePointRotation(lastPlayerDirection);
@@ -91,21 +91,21 @@ namespace Player
             rb.MovePosition(rb.position + model.movement * Time.fixedDeltaTime);
         }
 
-        PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
+        Enums.PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
         {
             if (joystickX > 0.1f && joystickY < 0.1f && joystickY >= 0.0f)
-                return PlayerDirection.Right;
+                return Enums.PlayerDirection.Right;
             if (joystickX < -0.1f && joystickY < 0.1f && joystickY >= 0.0f)
-                return PlayerDirection.Left;
+                return Enums.PlayerDirection.Left;
             if (joystickY > 0.1f && joystickX < 0.1f && joystickX >= 0.0f)
-                return PlayerDirection.Up;
+                return Enums.PlayerDirection.Up;
             if (joystickY < -0.1f && joystickX < 0.1f && joystickX >= 0.0f)
-                return PlayerDirection.Down;
+                return Enums.PlayerDirection.Down;
 
-            return PlayerDirection.Zero;
+            return Enums.PlayerDirection.Zero;
         }
 
-        Quaternion GetFirePointRotation(PlayerDirection playerDirection)
+        Quaternion GetFirePointRotation(Enums.PlayerDirection playerDirection)
         {
             if (inputModel.selectedTarget != null)
             {
@@ -118,13 +118,13 @@ namespace Player
 
             switch (playerDirection)
             {
-                case PlayerDirection.Right:
+                case Enums.PlayerDirection.Right:
                     return Quaternion.Euler(0f, 0f, -90f); // RIGHT
-                case PlayerDirection.Left:
+                case Enums.PlayerDirection.Left:
                     return Quaternion.Euler(0f, 0f, 90f); //LEFT
-                case PlayerDirection.Up:
+                case Enums.PlayerDirection.Up:
                     return Quaternion.Euler(0f, 0f, 0f); //UP
-                case PlayerDirection.Down:
+                case Enums.PlayerDirection.Down:
                     return Quaternion.Euler(0f, -0f, 180f); //DOWN
                 default:
                     return Quaternion.identity;

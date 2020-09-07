@@ -1,4 +1,4 @@
-﻿namespace Mechanics.Inventory.Items
+﻿﻿namespace Mechanics.Inventory.Items
 {
     public class Equipment : Item
     {

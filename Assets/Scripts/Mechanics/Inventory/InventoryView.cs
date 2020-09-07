@@ -20,10 +20,6 @@ namespace Ui
             slots = slotsContainer.GetComponentsInChildren<InventorySlot>();
         }
 
-        private void Update()
-        {
-            //
-        }
 
         void UpdateUi()
         {

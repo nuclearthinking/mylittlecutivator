@@ -1,4 +1,4 @@
-﻿namespace Player
+﻿namespace Enums
 {
     public enum ArmorType
     {

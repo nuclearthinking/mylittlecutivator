@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Enums;
+using Player;
 using UnityEngine;
 
 namespace Mechanics.Inventory.Items
@@ -8,7 +9,8 @@ namespace Mechanics.Inventory.Items
     {
         Sword()
         {
-            type = WeaponType.Sword;
+            type = ItemType.MainHand;
+            weaponType = WeaponType.Sword;
         }
     }
 }

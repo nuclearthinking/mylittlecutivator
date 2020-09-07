@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enums;
+using UnityEngine;
 
 namespace Mechanics.Inventory.Items
 {
@@ -6,7 +7,7 @@ namespace Mechanics.Inventory.Items
     {
         public new string name = "New Item";
         public Sprite icon = null;
-
+        public ItemType type;
 
         public virtual bool Use()
         {

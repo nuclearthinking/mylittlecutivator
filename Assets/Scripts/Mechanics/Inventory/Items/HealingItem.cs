@@ -1,4 +1,5 @@
 ﻿using Core;
+using Enums;
 using Gameplay;
 using UnityEngine;
 
@@ -8,12 +9,15 @@ namespace Mechanics.Inventory.Items
     public class HealingItem : Item
     {
         public int healingAmount = 30;
-        public bool usable;
 
+        HealingItem()
+        {
+            type = ItemType.Consumable;
+        }
 
         public override bool Use()
         {
-            if (usable)
+            if (type == ItemType.Consumable) 
             {
                 Simulation.Schedule<HealPlayer>().healingAmount = healingAmount;
                 return true;

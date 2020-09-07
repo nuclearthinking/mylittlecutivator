@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Enums;
+using Player;
 using UnityEngine;
 
 namespace Mechanics.Inventory.Items
@@ -6,7 +7,7 @@ namespace Mechanics.Inventory.Items
 
     public class WeaponItem : Equipment
     {
-        [SerializeField] protected WeaponType type;
+        [SerializeField] protected WeaponType weaponType;
         [SerializeField] protected float damage;
     }
 }
