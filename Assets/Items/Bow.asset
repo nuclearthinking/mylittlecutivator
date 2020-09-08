@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Weak Short Bow
   icon: {fileID: 21300000, guid: bbf8638a8a75d9c42b93639213c92c9b, type: 3}
-  type: 0
+  type: 3
+  weaponType: 0
   damage: 20

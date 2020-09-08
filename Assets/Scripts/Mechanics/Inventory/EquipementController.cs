@@ -10,45 +10,49 @@ namespace Mechanics.Inventory
     public class EquipementController : MonoBehaviour
     {
         #region Singleton
+
         public static EquipementController Instance { get; private set; }
+
         private void Awake()
         {
             if (Instance == null)
                 Instance = this;
         }
+
         #endregion
 
-        private Equipment head;
-        private Equipment armor;
-        private Equipment mainHand;
-        private Equipment boots;
-        private Equipment offHand;
-        
+        public Equipment Armor { get; private set; }
+        public Equipment MainHand { get; private set; }
+        public Equipment Boots { get; private set; }
+        public Equipment OffHand { get; private set; }
+        public Equipment Head { get; private set; }
+
         public delegate void OnEquipementChanged();
+
         public OnEquipementChanged onEquipementChangedCallback;
-        
+
         public void EquipItem(Equipment item)
         {
             switch (item.type)
             {
                 case ItemType.Armor:
-                    armor = item;
+                    Armor = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.Boots:
-                    boots = item;
+                    Boots = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.Helmet:
-                    head = item;
+                    Head = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.MainHand:
-                    mainHand = item;
+                    MainHand = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.OffHand:
-                    offHand = item;
+                    OffHand = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 default:

@@ -11,7 +11,7 @@ namespace Mechanics.Inventory
         [SerializeField] private ItemType itemType;
         public Image itemIcon;
         public Image defaultIcon;
-        private Item item;
+        [SerializeField] private Item item;
 
         private bool IsEquipped => item != null;
 
@@ -20,6 +20,7 @@ namespace Mechanics.Inventory
             item = newItem;
             defaultIcon.enabled = false;
             itemIcon.sprite = item.icon;
+            itemIcon.enabled = true;
         }
 
         public void Remove()

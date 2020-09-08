@@ -1,5 +1,6 @@
 ﻿using Enums;
 using UnityEngine;
+using Utils;
 
 namespace Mechanics.Inventory.Items
 {
@@ -13,5 +14,14 @@ namespace Mechanics.Inventory.Items
         {
             return false;
         }
+
+        public bool isEquipable =>
+            type.In(
+                ItemType.Armor,
+                ItemType.MainHand,
+                ItemType.Boots,
+                ItemType.Helmet,
+                ItemType.OffHand
+            );
     }
 }

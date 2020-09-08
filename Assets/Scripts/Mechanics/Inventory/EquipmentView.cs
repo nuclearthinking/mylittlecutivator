@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mechanics.Inventory
@@ -7,12 +8,12 @@ namespace Mechanics.Inventory
     {
         public EquipementSlot armorSlot;
         public EquipementSlot bootsSlot;
-        public EquipementSlot helmetSlot;
+        public EquipementSlot headSlot;
         public EquipementSlot mainHandSlot;
         public EquipementSlot offHandSlot;
 
         private EquipementController equipementController;
-
+        
         private void Start()
         {
             equipementController = EquipementController.Instance;
@@ -22,7 +23,30 @@ namespace Mechanics.Inventory
 
         void UpdateUi()
         {
-            
+            if (equipementController.Armor != null)
+            {
+                armorSlot.Add(equipementController.Armor);
+            }
+
+            if (equipementController.Boots != null)
+            {
+                bootsSlot.Add(equipementController.Armor);
+            }
+
+            if (equipementController.Head != null)
+            {
+                headSlot.Add(equipementController.Head);
+            }
+
+            if (equipementController.MainHand != null)
+            {
+                mainHandSlot.Add(equipementController.MainHand);
+            }
+
+            if (equipementController.OffHand != null)
+            {
+                offHandSlot.Add(equipementController.OffHand);
+            }
         }
     }
 }

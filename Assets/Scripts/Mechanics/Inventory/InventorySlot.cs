@@ -7,7 +7,6 @@ namespace Mechanics.Inventory
     public class InventorySlot : MonoBehaviour
     {
         public Image icon;
-
         protected Item item;
 
         public void AddItem(Item newItem)
@@ -27,6 +26,13 @@ namespace Mechanics.Inventory
 
         public virtual void SlotClick()
         {
+            if (item == null)
+                return;
+            if (item.isEquipable)
+            {
+                EquipementController.Instance.EquipItem(item as Equipment);
+            }
+
             var removeItem = item.Use();
 
             if (removeItem)
