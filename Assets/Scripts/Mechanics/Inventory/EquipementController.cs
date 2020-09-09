@@ -31,6 +31,13 @@ namespace Mechanics.Inventory
 
         public OnEquipementChanged onEquipementChangedCallback;
 
+        private InventoryController inventory;
+
+        private void Start()
+        {
+            inventory = InventoryController.Instance;
+        }
+
         public void EquipItem(Equipment item)
         {
             switch (item.type)
@@ -53,6 +60,40 @@ namespace Mechanics.Inventory
                     break;
                 case ItemType.OffHand:
                     OffHand = item;
+                    onEquipementChangedCallback?.Invoke();
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        public void UnEquipItem(Item item)
+        {
+            switch (item.type)
+            {
+                case ItemType.Armor:
+                    inventory.Add(item);
+                    Armor = null;
+                    onEquipementChangedCallback?.Invoke();
+                    break;
+                case ItemType.Boots:
+                    inventory.Add(item);
+                    Boots = null;
+                    onEquipementChangedCallback?.Invoke();
+                    break;
+                case ItemType.Helmet:
+                    inventory.Add(item);
+                    Head = null;
+                    onEquipementChangedCallback?.Invoke();
+                    break;
+                case ItemType.MainHand:
+                    inventory.Add(item);
+                    MainHand = null;
+                    onEquipementChangedCallback?.Invoke();
+                    break;
+                case ItemType.OffHand:
+                    inventory.Add(item);
+                    OffHand = null;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 default:

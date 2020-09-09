@@ -1,6 +1,7 @@
 ﻿using Core;
 using Gameplay;
 using Mechanics;
+using Mechanics.Inventory.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -128,9 +129,7 @@ public class TreantController : MonoBehaviour, IPointerUpHandler, IPointerDownHa
             var roll = drop.Roll();
             if (roll != null)
             {
-                var spawnItemEvent = Simulation.Schedule<SpawnItem>();
-                spawnItemEvent.position = gameObject.transform;
-                spawnItemEvent.item = roll;
+                GameController.Instance.DropItem(roll, gameObject.transform.position);
             }
         }
     }

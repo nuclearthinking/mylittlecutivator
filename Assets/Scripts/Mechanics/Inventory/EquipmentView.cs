@@ -30,7 +30,7 @@ namespace Mechanics.Inventory
 
             if (equipementController.Boots != null)
             {
-                bootsSlot.Add(equipementController.Armor);
+                bootsSlot.Add(equipementController.Boots);
             }
 
             if (equipementController.Head != null)

@@ -28,15 +28,27 @@ namespace Mechanics.Inventory
         {
             if (item == null)
                 return;
-            if (item.isEquipable)
+            if (item.IsEquipable)
             {
-                EquipementController.Instance.EquipItem(item as Equipment);
+                EquipItem(item);
+            } else if (item.IsConsumable)
+            {
+                ConsumeItem(item);
             }
+        }
 
-            var removeItem = item.Use();
+        private void ConsumeItem(Item itemToConsume)
+        {
+            var removeItem = itemToConsume.Use();
 
             if (removeItem)
-                InventoryController.Instance.RemoveItem(item);
+                InventoryController.Instance.RemoveItem(itemToConsume);
+        }
+
+        private void EquipItem(Item itemToEquip)
+        {
+            EquipementController.Instance.EquipItem(itemToEquip as Equipment);
+            InventoryController.Instance.RemoveItem(itemToEquip);
         }
     }
 }

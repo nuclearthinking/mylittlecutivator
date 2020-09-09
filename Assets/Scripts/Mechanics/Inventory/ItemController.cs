@@ -8,7 +8,6 @@ namespace Mechanics
     public class ItemController : MonoBehaviour
     {
         public Item item;
-        public Color outlineColor;
 
 
         private void Awake()

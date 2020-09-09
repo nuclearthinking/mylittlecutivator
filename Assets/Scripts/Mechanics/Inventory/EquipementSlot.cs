@@ -35,6 +35,7 @@ namespace Mechanics.Inventory
         {
             if (IsEquipped)
             {
+                EquipementController.Instance.UnEquipItem(item);
                 Remove();
             }
         }

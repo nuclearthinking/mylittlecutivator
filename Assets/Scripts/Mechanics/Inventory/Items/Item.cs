@@ -9,13 +9,14 @@ namespace Mechanics.Inventory.Items
         public new string name = "New Item";
         public Sprite icon = null;
         public ItemType type;
+        public ItemQuality quality;
 
         public virtual bool Use()
         {
             return false;
         }
 
-        public bool isEquipable =>
+        public bool IsEquipable =>
             type.In(
                 ItemType.Armor,
                 ItemType.MainHand,
@@ -23,5 +24,8 @@ namespace Mechanics.Inventory.Items
                 ItemType.Helmet,
                 ItemType.OffHand
             );
-    }
+
+        public bool IsConsumable => type == ItemType.Consumable;
+    }    
+        
 }
