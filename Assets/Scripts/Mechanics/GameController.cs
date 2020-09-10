@@ -18,7 +18,7 @@ namespace Mechanics
         private void Start()
         {
             lootItemPrefab = Resources.Load<GameObject>("Items/LootItem");
-            // Physics2D.IgnoreLayerCollision(9,8, true);
+            Physics2D.IgnoreLayerCollision(9,8, true);
         }
 
         public int GetExpToNextLevel(int currentLevel)
@@ -51,6 +51,7 @@ namespace Mechanics
             renderer.sprite = item.icon;
             renderer.material.SetColor("OutlineColor", ItemUtils.ColorByQuality(item.quality));
             newItem.GetComponent<ItemController>().item = item;
+            Debug.Log(LayerMask.LayerToName(newItem.layer));
             return newItem;
         }
     }

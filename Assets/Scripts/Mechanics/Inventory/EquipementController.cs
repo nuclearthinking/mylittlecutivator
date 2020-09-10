@@ -27,6 +27,8 @@ namespace Mechanics.Inventory
         public Equipment OffHand { get; private set; }
         public Equipment Head { get; private set; }
 
+        public int damageBonus = 0;
+
         public delegate void OnEquipementChanged();
 
         public OnEquipementChanged onEquipementChangedCallback;
@@ -36,6 +38,7 @@ namespace Mechanics.Inventory
         private void Start()
         {
             inventory = InventoryController.Instance;
+            onEquipementChangedCallback += CalcBonusDamage;
         }
 
         public void EquipItem(Equipment item)
@@ -99,6 +102,18 @@ namespace Mechanics.Inventory
                 default:
                     return;
             }
+        }
+
+        private void CalcBonusDamage()
+        {
+            int damage = 0;
+            if (MainHand != null) damage += MainHand.damageBonus;
+            if (OffHand != null) damage += OffHand.damageBonus;
+            if (Armor != null) damage += Armor.damageBonus;
+            if (Boots != null) damage += Boots.damageBonus;
+            if (Head != null) damage += Head.damageBonus;
+
+            damageBonus = damage;
         }
     }
 }

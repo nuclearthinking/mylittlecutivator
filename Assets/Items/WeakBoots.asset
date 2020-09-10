@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 29a1226f7b5e20240942612e151c3c4c, type: 3}
   type: 1
   quality: 6
+  damageBonus: 2
   armor: 3

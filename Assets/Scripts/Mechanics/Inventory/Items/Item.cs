@@ -10,7 +10,7 @@ namespace Mechanics.Inventory.Items
         public Sprite icon = null;
         public ItemType type;
         public ItemQuality quality;
-
+        public int damageBonus = 0;
         public virtual bool Use()
         {
             return false;

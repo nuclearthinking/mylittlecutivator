@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Mechanics.Inventory;
+using UnityEngine;
 
 namespace Model
 {
@@ -46,7 +47,8 @@ namespace Model
 
         public int GetDamageDeal()
         {
-            return baseDamage + (int) (baseDamage * (level * 0.3));
+            int damage = baseDamage + (int) (baseDamage * (level * 0.3));
+            return damage + EquipementController.Instance.damageBonus;
         }
 
         public void IncrementHealth(int health)

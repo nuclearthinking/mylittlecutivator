@@ -165,7 +165,8 @@ namespace Player
         {
             if (model.currentXp < model.nextLevelXp)
                 return;
-            Simulation.Schedule<PlayerLevelUp>();
+            var levelUp = Simulation.Schedule<PlayerLevelUp>();
+            levelUp.player = this;
         }
 
         public void TakeDamage(int damage)
