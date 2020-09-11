@@ -104,6 +104,7 @@ public class Treant : Enemy, IPointerUpHandler, IPointerDownHandler
 
     private new void Die()
     {
+        base.Die();
         Simulation.Schedule<EnemyKilled>().enemy = this;
         CheckDrop();
         Dispose();

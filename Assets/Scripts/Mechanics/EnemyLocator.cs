@@ -65,8 +65,17 @@ namespace Mechanics
             if (closestEnemy == null)
                 return;
 
+            if (playerModel.selectedTarget == closestEnemy)
+                return;
+
+            if (playerModel.selectedTarget != null)
+            {
+                playerModel.selectedTarget.ReleaseAsTarget();
+                playerModel.selectedTarget = null;
+            }
+
             playerModel.selectedTarget = closestEnemy;
-            closestEnemy.GetComponent<Enemy>().SelectedAsTarget();
+            playerModel.selectedTarget.SelectedAsTarget();
         }
     }
 }

@@ -6,13 +6,13 @@ namespace Model
 {
     public class PlayerModel
     {
-        [SerializeField] private int currentHealth;
+        private int currentHealth;
         public int maximumHealth = 100;
 
         // MOVEMENT
         public Vector3 position;
         public Vector2 movement;
-        public Vector2 lastMove;
+        public Vector2 lastMove = new Vector2(0, 0);
         public float xInput;
         public float yInput;
 

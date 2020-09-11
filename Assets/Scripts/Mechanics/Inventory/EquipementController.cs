@@ -46,22 +46,32 @@ namespace Mechanics.Inventory
             switch (item.type)
             {
                 case ItemType.Armor:
+                    if (Armor != null)
+                        inventory.Add(Armor);
                     Armor = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.Boots:
+                    if (Boots != null)
+                        inventory.Add(Boots);
                     Boots = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.Helmet:
+                    if (Head != null)
+                        inventory.Add(Head);
                     Head = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.MainHand:
+                    if (MainHand != null)
+                        inventory.Add(MainHand);
                     MainHand = item;
                     onEquipementChangedCallback?.Invoke();
                     break;
                 case ItemType.OffHand:
+                    if (OffHand != null)
+                        inventory.Add(OffHand);
                     OffHand = item;
                     onEquipementChangedCallback?.Invoke();
                     break;

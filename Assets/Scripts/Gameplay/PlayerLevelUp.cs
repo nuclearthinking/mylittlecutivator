@@ -1,7 +1,6 @@
 ﻿using Core;
 using Mechanics;
 using Model;
-using Player;
 using UnityEngine;
 
 namespace Gameplay

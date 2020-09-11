@@ -24,6 +24,7 @@ namespace Units
 
         public virtual void Die()
         {
+            InstantiateDeathEffect();
         }
 
 

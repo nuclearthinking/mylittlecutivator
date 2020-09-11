@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System.Collections;
+using Core;
 using Gameplay;
 using Model;
 using Units;
@@ -78,10 +79,10 @@ namespace Mechanics
             }
 
             // LEVELING
-            UpdatePlayerLevel();
+            StartCoroutine(UpdatePlayerLevel());
 
             // OTHER
-            CheckDistanceToTarget();
+            StartCoroutine(CheckDistanceToTarget());
             LookAtSelectedTarget();
         }
 
@@ -130,10 +131,11 @@ namespace Mechanics
             }
         }
 
-        void CheckDistanceToTarget()
+        IEnumerator CheckDistanceToTarget()
         {
+            yield return new WaitForSeconds(0.2f);
             if (playerModel.selectedTarget == null)
-                return;
+                yield break;
             float distance = Vector3.Distance(
                 gameObject.transform.position,
                 playerModel.selectedTarget.transform.position
@@ -160,10 +162,12 @@ namespace Mechanics
             return new Vector2(targetPos.x, targetPos.y) - new Vector2(subjectPos.x, subjectPos.y);
         }
 
-        void UpdatePlayerLevel()
+        IEnumerator UpdatePlayerLevel()
         {
+            yield return new WaitForSeconds(.2f);
             if (playerModel.currentXp < playerModel.nextLevelXp)
-                return;
+                yield break;
+            
             var levelUp = Simulation.Schedule<PlayerLevelUp>();
             levelUp.player = this;
         }
