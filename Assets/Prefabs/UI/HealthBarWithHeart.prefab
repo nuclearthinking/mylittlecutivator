@@ -202,7 +202,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarWithHeart
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6093838766438718934, guid: ed9ba90030e043c419e569c10b30beae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed9ba90030e043c419e569c10b30beae, type: 3}
 --- !u!224 &5152133332266887052 stripped
 RectTransform:

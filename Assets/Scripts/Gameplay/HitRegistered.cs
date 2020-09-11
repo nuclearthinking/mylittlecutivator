@@ -15,7 +15,7 @@ namespace Gameplay
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                TreantController treant = collision.GetComponent<TreantController>();
+                Treant treant = collision.GetComponent<Treant>();
                 treant.TakeDamage(playerModel.GetDamageDeal());
             }
 

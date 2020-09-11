@@ -1,37 +1,36 @@
-﻿using System.Collections;
-using Core;
+﻿using Core;
 using Gameplay;
-using Mechanics;
 using Model;
+using Units;
 using UnityEngine;
 
-namespace Player
+namespace Mechanics
 {
     public class PlayerController : MonoBehaviour
     {
-        public PlayerModel model = Simulation.GetModel<PlayerModel>();
         public Transform firePoint;
-        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
+        
+        private readonly PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
 
         private Rigidbody2D rb;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            model.IncrementHealth(model.maximumHealth);
-            model.nextLevelXp = GameController.Instance.GetExpToNextLevel(model.level);
+            playerModel.IncrementHealth(playerModel.maximumHealth);
+            playerModel.nextLevelXp = Game.Instance.GetExpToNextLevel(playerModel.level);
         }
 
         private void Update()
         {
-            model.movement.x = model.xInput;
-            model.movement.y = model.yInput;
+            playerModel.movement.x = playerModel.xInput;
+            playerModel.movement.y = playerModel.yInput;
 
-            var playerDirection = GetPlayerDirection(model.xInput, model.yInput);
+            var playerDirection = GetPlayerDirection(playerModel.xInput, playerModel.yInput);
             Quaternion firePointRotation;
             if (playerDirection == Enums.PlayerDirection.Zero)
             {
-                var lastPlayerDirection = GetPlayerDirection(model.lastMove.x, model.lastMove.y);
+                var lastPlayerDirection = GetPlayerDirection(playerModel.lastMove.x, playerModel.lastMove.y);
                 firePointRotation = GetFirePointRotation(lastPlayerDirection);
             }
             else
@@ -42,40 +41,40 @@ namespace Player
             firePoint.transform.rotation = firePointRotation;
 
 
-            if (model.movement.x > 0.1f || model.movement.x < -0.1f)
+            if (playerModel.movement.x > 0.1f || playerModel.movement.x < -0.1f)
             {
-                model.lastMove = new Vector2(model.movement.x, 0f);
+                playerModel.lastMove = new Vector2(playerModel.movement.x, 0f);
             }
 
-            if (model.movement.y > 0.1f || model.movement.y < -0.1f)
+            if (playerModel.movement.y > 0.1f || playerModel.movement.y < -0.1f)
             {
-                model.lastMove = new Vector2(0f, model.movement.y);
+                playerModel.lastMove = new Vector2(0f, playerModel.movement.y);
             }
 
-            if (model.movement.x >= .2f)
+            if (playerModel.movement.x >= .2f)
             {
-                model.movement.x = GameController.Instance.Config.MovementSpeed;
+                playerModel.movement.x = Game.Instance.Config.MovementSpeed;
             }
-            else if (model.movement.x <= -.2f)
+            else if (playerModel.movement.x <= -.2f)
             {
-                model.movement.x = -GameController.Instance.Config.MovementSpeed;
+                playerModel.movement.x = -Game.Instance.Config.MovementSpeed;
             }
             else
             {
-                model.movement.x = 0f;
+                playerModel.movement.x = 0f;
             }
 
-            if (model.movement.y >= .2f)
+            if (playerModel.movement.y >= .2f)
             {
-                model.movement.y = GameController.Instance.Config.MovementSpeed;
+                playerModel.movement.y = Game.Instance.Config.MovementSpeed;
             }
-            else if (model.movement.y <= -.2f)
+            else if (playerModel.movement.y <= -.2f)
             {
-                model.movement.y = -GameController.Instance.Config.MovementSpeed;
+                playerModel.movement.y = -Game.Instance.Config.MovementSpeed;
             }
             else
             {
-                model.movement.y = 0f;
+                playerModel.movement.y = 0f;
             }
 
             // LEVELING
@@ -88,7 +87,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + model.movement * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + playerModel.movement * Time.fixedDeltaTime);
         }
 
         Enums.PlayerDirection GetPlayerDirection(float joystickX, float joystickY)
@@ -107,10 +106,10 @@ namespace Player
 
         Quaternion GetFirePointRotation(Enums.PlayerDirection playerDirection)
         {
-            if (inputModel.selectedTarget != null)
+            if (playerModel.selectedTarget != null)
             {
                 var firePointPosition = firePoint.position;
-                var targetPos = inputModel.selectedTarget.transform.position;
+                var targetPos = playerModel.selectedTarget.transform.position;
                 Vector2 lookAt = GetLookAtPosition(firePointPosition, targetPos);
                 float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90f;
                 return Quaternion.Euler(0f, 0f, angle);
@@ -133,27 +132,27 @@ namespace Player
 
         void CheckDistanceToTarget()
         {
-            if (inputModel.selectedTarget == null)
+            if (playerModel.selectedTarget == null)
                 return;
             float distance = Vector3.Distance(
                 gameObject.transform.position,
-                inputModel.selectedTarget.transform.position
+                playerModel.selectedTarget.transform.position
             );
-            if (distance >= GameController.Instance.Config.DistanceToReleaseTarget)
+            if (distance >= Game.Instance.Config.DistanceToReleaseTarget)
             {
-                Simulation.Schedule<ReleaseEnemySelection>();
+                playerModel.selectedTarget.GetComponent<Enemy>().ReleaseAsTarget();
             }
         }
 
         void LookAtSelectedTarget()
         {
-            if (inputModel.selectedTarget == null)
+            if (playerModel.selectedTarget == null)
                 return;
             var lookAtPosition = GetLookAtPosition(
-                firePoint.position, inputModel.selectedTarget.transform.position
+                firePoint.position, playerModel.selectedTarget.transform.position
             );
-            model.lastMove.x = lookAtPosition.x;
-            model.lastMove.y = lookAtPosition.y;
+            playerModel.lastMove.x = lookAtPosition.x;
+            playerModel.lastMove.y = lookAtPosition.y;
         }
 
         private Vector2 GetLookAtPosition(Vector3 subjectPos, Vector3 targetPos)
@@ -163,7 +162,7 @@ namespace Player
 
         void UpdatePlayerLevel()
         {
-            if (model.currentXp < model.nextLevelXp)
+            if (playerModel.currentXp < playerModel.nextLevelXp)
                 return;
             var levelUp = Simulation.Schedule<PlayerLevelUp>();
             levelUp.player = this;
@@ -171,7 +170,7 @@ namespace Player
 
         public void TakeDamage(int damage)
         {
-            model.DecrementHealth(damage);
+            playerModel.DecrementHealth(damage);
         }
     }
 }

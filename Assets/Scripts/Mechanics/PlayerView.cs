@@ -9,7 +9,6 @@ namespace Player
 {
     public class PlayerView : MonoBehaviour
     {
-        public Button attackButton;
         private readonly PlayerModel model = Simulation.GetModel<PlayerModel>();
 
         private Animator animator;
@@ -17,7 +16,7 @@ namespace Player
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            attackButton.onClick.AddListener(AttackButtonPressed);
+            model.nextFireTime = 0;
         }
 
         void Update()
@@ -35,7 +34,7 @@ namespace Player
             animator.SetFloat("LastMoveY", model.lastMove.y);
         }
 
-        private void AttackButtonPressed()
+        public void AttackButtonPressed()
         {
             if (Time.time < model.nextFireTime)
                 return;

@@ -1,31 +1,30 @@
 ﻿using Core;
 using Model;
+using Units;
 
-namespace Gameplay
-
+namespace Events
 {
     public class EnemyKilled : Simulation.Event<EnemyKilled>
     {
+        public Enemy enemy;
+        private readonly PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
 
-        public TreantController treant;
-        private readonly InputModel inputModel = Simulation.GetModel<InputModel>();
-        
+
         public override bool Precondition()
         {
-            return treant != null;
+            return enemy != null;
         }
 
         public override void Execute()
         {
-            if (treant == null) 
+            if (enemy == null)
                 return;
-            if (treant.gameObject.GetHashCode() == inputModel.selectedTarget.GetHashCode())
+            if (enemy.gameObject.GetHashCode() == playerModel.selectedTarget.GetHashCode())
             {
-                inputModel.selectedTarget = null;
+                playerModel.selectedTarget = null;
             }
-            
-            PlayerModel player = Simulation.GetModel<PlayerModel>();
-            player.AddXp(30);
+
+            playerModel.AddXp(30);
         }
     }
 }

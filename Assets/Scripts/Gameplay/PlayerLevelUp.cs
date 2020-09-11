@@ -15,7 +15,7 @@ namespace Gameplay
         {
             playerModel.currentXp -= playerModel.nextLevelXp;
             playerModel.level += 1;
-            playerModel.nextLevelXp = GameController.Instance.GetExpToNextLevel(playerModel.level);
+            playerModel.nextLevelXp = Game.Instance.GetExpToNextLevel(playerModel.level);
             player.GetComponentInChildren<ParticleSystem>().Play();
         }
     }

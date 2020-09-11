@@ -1,13 +1,13 @@
 ﻿using Mechanics.Inventory;
+using Units;
 using UnityEngine;
 
 namespace Model
 {
-    [System.Serializable]
     public class PlayerModel
     {
         [SerializeField] private int currentHealth;
-        public int maximumHealth;
+        public int maximumHealth = 100;
 
         // MOVEMENT
         public Vector3 position;
@@ -16,6 +16,7 @@ namespace Model
         public float xInput;
         public float yInput;
 
+        public Enemy selectedTarget;
 
         public float nextFireTime;
         public float arrowForce = 20f;
