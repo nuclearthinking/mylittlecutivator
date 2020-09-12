@@ -10,11 +10,11 @@ namespace Mechanics
         public Item item;
 
 
-        private void Awake()
-        {
-            var renderer = GetComponent<SpriteRenderer>();
-            renderer.sprite = item.icon;
-        }
+        // private void Awake()
+        // {
+            // var renderer = GetComponent<SpriteRenderer>();
+            // renderer.sprite = item.icon;
+        // }
 
         public void PickUp()
         {

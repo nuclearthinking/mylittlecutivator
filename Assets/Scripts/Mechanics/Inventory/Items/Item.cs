@@ -1,11 +1,14 @@
-﻿using Enums;
+﻿using System;
+using Enums;
 using UnityEngine;
 using Utils;
 
 namespace Mechanics.Inventory.Items
 {
-    public class Item : ScriptableObject
+    [CreateAssetMenu(fileName = "Healing Item", menuName = "Inventory/Item", order = 0)]
+    public class Item : ScriptableObject, ICloneable
     {
+        public int id;
         public new string name = "New Item";
         public Sprite icon = null;
         public ItemType type;
@@ -26,6 +29,19 @@ namespace Mechanics.Inventory.Items
             );
 
         public bool IsConsumable => type == ItemType.Consumable;
+
+
+        public object Clone()
+        {
+            var newItem = CreateInstance<Item>();
+            newItem.id = id;
+            newItem.name = name;
+            newItem.icon = icon;
+            newItem.type = type;
+            newItem.quality = quality;
+            newItem.damageBonus = damageBonus;
+            return newItem;
+        }
     }    
         
 }

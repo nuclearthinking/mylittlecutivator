@@ -22,7 +22,7 @@ namespace Units
             _renderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
-        public virtual void Die()
+        protected virtual void Die()
         {
             InstantiateDeathEffect();
         }

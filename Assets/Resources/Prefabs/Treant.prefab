@@ -180,14 +180,6 @@ MonoBehaviour:
   dropList:
   - item: {fileID: 11400000, guid: 5465501761493344ab483a84a4f8bafa, type: 2}
     chance: 30
-  - item: {fileID: 11400000, guid: 1b3b788a9fa0e684c940c0e01e7ced7a, type: 2}
-    chance: 10
-  - item: {fileID: 11400000, guid: 93cbafb2eb9377f4ea2b802486b6c189, type: 2}
-    chance: 10
-  - item: {fileID: 11400000, guid: 4d8de935e851f8a45bf85117249a3959, type: 2}
-    chance: 10
-  - item: {fileID: 11400000, guid: d631691978416f842b01e7f5a9f1ccbd, type: 2}
-    chance: 10
   hitPoints: 100
 --- !u!1 &3125278354694545073
 GameObject:

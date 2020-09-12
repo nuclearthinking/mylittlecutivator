@@ -6,7 +6,7 @@ namespace Model
 {
     public class PlayerModel
     {
-        private int currentHealth;
+        public int currentHealth;
         public int maximumHealth = 100;
 
         // MOVEMENT

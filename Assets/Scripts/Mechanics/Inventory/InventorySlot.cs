@@ -47,7 +47,7 @@ namespace Mechanics.Inventory
 
         private void EquipItem(Item itemToEquip)
         {
-            EquipementController.Instance.EquipItem(itemToEquip as Equipment);
+            EquipementController.Instance.EquipItem(itemToEquip as Item);
             InventoryController.Instance.RemoveItem(itemToEquip);
         }
     }

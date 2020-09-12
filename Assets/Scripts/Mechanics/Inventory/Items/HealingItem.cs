@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Enums;
 using Gameplay;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace Mechanics.Inventory.Items
 {
     [CreateAssetMenu(fileName = "Healing Item", menuName = "Inventory/Healing Item", order = 0)]
-    public class HealingItem : Item
+    public class HealingItem : Item, ICloneable
     {
         public int healingAmount = 30;
 
@@ -24,6 +25,14 @@ namespace Mechanics.Inventory.Items
             }
 
             return false;
+        }
+
+        public new object Clone()
+        {
+            var newItem = (HealingItem) base.Clone();
+            newItem.healingAmount = healingAmount;
+            newItem.type = type;
+            return newItem;
         }
     }
 }

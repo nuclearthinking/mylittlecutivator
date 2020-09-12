@@ -27,11 +27,16 @@ namespace Mechanics.Inventory
         class EquipmentItem
         {
             public ItemType type;
-            public Equipment item;
+            public Item item;
 
             public EquipmentItem(ItemType type)
             {
                 this.type = type;
+            }
+
+            public int GetId()
+            {
+                return item == null ? 0 : item.id;
             }
         }
 
@@ -57,7 +62,7 @@ namespace Mechanics.Inventory
             onEquipementChangedCallback += CalcBonusDamage;
         }
 
-        public void EquipItem(Equipment item)
+        public void EquipItem(Item item)
         {
             foreach (var equipmentItem in equipement)
             {
@@ -110,6 +115,31 @@ namespace Mechanics.Inventory
                 }
             }
             return null;
+        }
+
+        public int[] GetEquipmentAsIds()
+        {
+            return new[]
+            {
+                equipement[0].GetId(),
+                equipement[1].GetId(),
+                equipement[2].GetId(),
+                equipement[3].GetId(),
+                equipement[4].GetId(),
+            };
+        }
+
+        public void LoadEquipment(int[] itemIds)
+        {
+            for (int i = 0; i < itemIds.Length; i++)
+            {
+                if (itemIds[i] != 0)
+                {
+                    var item = Game.Instance.GetItemById(itemIds[i]);
+                    equipement[i].item = item;
+                }
+            }
+            onEquipementChangedCallback?.Invoke();
         }
     }
 }
