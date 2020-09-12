@@ -8,7 +8,7 @@ namespace Mechanics.Inventory
 {
     public class EquipementSlot : MonoBehaviour
     {
-        [SerializeField] private ItemType itemType;
+        [SerializeField] public ItemType itemType;
         public Image itemIcon;
         public Image defaultIcon;
         [SerializeField] private Item item;

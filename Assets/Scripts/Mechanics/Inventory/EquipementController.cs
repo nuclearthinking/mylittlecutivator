@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Enums;
+using JetBrains.Annotations;
 using Mechanics.Inventory.Items;
 using UnityEditor;
 using UnityEngine;
@@ -21,12 +24,25 @@ namespace Mechanics.Inventory
 
         #endregion
 
-        public Equipment Armor { get; private set; }
-        public Equipment MainHand { get; private set; }
-        public Equipment Boots { get; private set; }
-        public Equipment OffHand { get; private set; }
-        public Equipment Head { get; private set; }
+        class EquipmentItem
+        {
+            public ItemType type;
+            public Equipment item;
 
+            public EquipmentItem(ItemType type)
+            {
+                this.type = type;
+            }
+        }
+
+        private readonly List<EquipmentItem> equipement = new List<EquipmentItem>
+        {
+            new EquipmentItem(ItemType.Armor),
+            new EquipmentItem(ItemType.Helmet),
+            new EquipmentItem(ItemType.Boots),
+            new EquipmentItem(ItemType.MainHand),
+            new EquipmentItem(ItemType.MainHand)
+        };
         public int damageBonus = 0;
 
         public delegate void OnEquipementChanged();
@@ -43,87 +59,57 @@ namespace Mechanics.Inventory
 
         public void EquipItem(Equipment item)
         {
-            switch (item.type)
+            foreach (var equipmentItem in equipement)
             {
-                case ItemType.Armor:
-                    if (Armor != null)
-                        inventory.Add(Armor);
-                    Armor = item;
+                if (equipmentItem.type == item.type)
+                {
+                    if (equipmentItem.item != null)
+                    {
+                        inventory.Add(item);
+                    }
+
+                    equipmentItem.item = item;
                     onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.Boots:
-                    if (Boots != null)
-                        inventory.Add(Boots);
-                    Boots = item;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.Helmet:
-                    if (Head != null)
-                        inventory.Add(Head);
-                    Head = item;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.MainHand:
-                    if (MainHand != null)
-                        inventory.Add(MainHand);
-                    MainHand = item;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.OffHand:
-                    if (OffHand != null)
-                        inventory.Add(OffHand);
-                    OffHand = item;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                default:
                     return;
+                }
             }
         }
 
         public void UnEquipItem(Item item)
         {
-            switch (item.type)
+            foreach (var equipmentItem in equipement)
             {
-                case ItemType.Armor:
+                if (equipmentItem.item == item)
+                {
                     inventory.Add(item);
-                    Armor = null;
+                    equipmentItem.item = null;
                     onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.Boots:
-                    inventory.Add(item);
-                    Boots = null;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.Helmet:
-                    inventory.Add(item);
-                    Head = null;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.MainHand:
-                    inventory.Add(item);
-                    MainHand = null;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                case ItemType.OffHand:
-                    inventory.Add(item);
-                    OffHand = null;
-                    onEquipementChangedCallback?.Invoke();
-                    break;
-                default:
                     return;
+                }
             }
         }
 
         private void CalcBonusDamage()
         {
-            int damage = 0;
-            if (MainHand != null) damage += MainHand.damageBonus;
-            if (OffHand != null) damage += OffHand.damageBonus;
-            if (Armor != null) damage += Armor.damageBonus;
-            if (Boots != null) damage += Boots.damageBonus;
-            if (Head != null) damage += Head.damageBonus;
+            var damage = equipement.Where(
+                equipmentItem => equipmentItem.item != null
+            ).Sum(
+                equipmentItem => equipmentItem.item.damageBonus
+            );
 
             damageBonus = damage;
+        }
+
+        public Item GetEquippedItem(ItemType itemType)
+        {
+            foreach (var equipmentItem in equipement)
+            {
+                if (equipmentItem.type == itemType)
+                {
+                    return equipmentItem.item;
+                }
+            }
+            return null;
         }
     }
 }

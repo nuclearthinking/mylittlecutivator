@@ -13,39 +13,30 @@ namespace Mechanics.Inventory
         public EquipementSlot offHandSlot;
 
         private EquipementController equipementController;
+
+        private List<EquipementSlot> equipementSlots;
         
         private void Start()
         {
             equipementController = EquipementController.Instance;
             equipementController.onEquipementChangedCallback += UpdateUi;
-
+            equipementSlots = new List<EquipementSlot>{armorSlot, bootsSlot, headSlot, mainHandSlot, offHandSlot};
         }
 
         void UpdateUi()
         {
-            if (equipementController.Armor != null)
+            foreach (var equipementSlot in equipementSlots)
             {
-                armorSlot.Add(equipementController.Armor);
+                CheckEquipment(equipementSlot);
             }
+        }
 
-            if (equipementController.Boots != null)
+        void CheckEquipment(EquipementSlot equipementSlot)
+        {
+            var equippedItem = equipementController.GetEquippedItem(equipementSlot.itemType);
+            if (equippedItem != null)
             {
-                bootsSlot.Add(equipementController.Boots);
-            }
-
-            if (equipementController.Head != null)
-            {
-                headSlot.Add(equipementController.Head);
-            }
-
-            if (equipementController.MainHand != null)
-            {
-                mainHandSlot.Add(equipementController.MainHand);
-            }
-
-            if (equipementController.OffHand != null)
-            {
-                offHandSlot.Add(equipementController.OffHand);
+                equipementSlot.Add(equippedItem);
             }
         }
     }

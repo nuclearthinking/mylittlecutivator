@@ -24,13 +24,6 @@ namespace Events
             {
                 playerModel.selectedTarget = null;
             }
-            else
-            {
-                Debug.Log("Killed unit " + enemy);
-                Debug.Log("Killed unit hash" + enemy.GetHashCode());
-                Debug.Log("Target unit " + playerModel.selectedTarget);
-                Debug.Log("Target unit hash" + playerModel.selectedTarget.GetHashCode());
-            }
 
             playerModel.AddXp(30);
         }

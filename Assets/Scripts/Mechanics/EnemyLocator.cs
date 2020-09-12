@@ -13,17 +13,16 @@ namespace Mechanics
 
         private void Update()
         {
-            var tempEnemies = new List<Enemy>();
+            var refreshedEnemies = new List<Enemy>();
 
             foreach (var enemy in nearEnemies)
             {
                 if (enemy != null && enemy.gameObject.activeSelf)
                 {
-                    tempEnemies.Add(enemy);
+                    refreshedEnemies.Add(enemy);
                 }
             }
-
-            nearEnemies = tempEnemies;
+            nearEnemies = refreshedEnemies;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
